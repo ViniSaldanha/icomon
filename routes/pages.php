@@ -9,12 +9,6 @@ $obRouter->get('/',[
     }
 ]);
 
-$obRouter->get('/sobre',[
-    function(){
-        return new Response(200,Pages\about::getAbout());
-    }
-]);
-
 $obRouter->get('/cadastrar-ba',[
     function($request){
         return new Response(200,Pages\Testimony::getTestimonies($request));
