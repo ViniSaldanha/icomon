@@ -9,11 +9,4 @@ $obRouter->get('/',[
     }
 ]);
 
-$obRouter->post('/cadastrar-ba',[
-    function($request){
-
-        return new Response(200,Pages\Testimony::insertTestimony($request));
-    }
-]);
-
 

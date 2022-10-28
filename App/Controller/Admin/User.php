@@ -47,19 +47,6 @@ class User extends Page{
         return parent::getPanel('Usuários > Icomon',$content,'users');
     }
 
-    public static function getNewUser($request){
-
-        $content = View::render('admin/modules/users/form',[
-            'title'     => 'Cadastrar usuário',
-            'nome'      => '',
-            'email'     => '',
-            'status'    => self::getStatus($request)
-           
-        ]);
-
-        return parent::getPanel('Cadastrar Usuário > Icomon',$content,'testimonies');
-    }
-
     public static function setNewUser($request){
         $postVars = $request->getPostVars();
         $nome  = $postVars['nome'] ?? '';
