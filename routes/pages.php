@@ -8,5 +8,3 @@ $obRouter->get('/',[
         return new Response(200,Pages\home::getHome());
     }
 ]);
-
-
