@@ -8,29 +8,6 @@ use \WilliamCosta\DatabaseManager\Pagination;
 
 class User extends Page{
 
-    
-    private static function getUserItems($request,&$obPagination){
-        $itens = '';
-
-        $quantidadetotal = EntityUser::getUsers(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
-
-        $queryParams = $request->getQueryParams();
-        $paginaAtual = $queryParams['page'] ?? 1;
-        $obPagination = new Pagination($quantidadetotal, $paginaAtual, 5);
-        $results = EntityUser::getUsers(null, 'id DESC',$obPagination->getLimit());
-
-        while($obUser = $results->fetchObject(EntityUser::class)){
-            $itens .= View::render('admin/modules/users/item', [
-                'id'         => $obUser->id,
-                'nome'       => $obUser->nome,
-                'email'      => $obUser->email         
-            ]);
-
-        }
-        return $itens;
-
-    }
-
     public static function getUsers($request){
         $content = View::render('admin/modules/users/index',[
             'itens' => self::getUserItems($request,$obPagination),
@@ -47,10 +24,9 @@ class User extends Page{
             'nome'      => '',
             'email'     => '',
             'status'    => self::getStatus($request)
-
         ]);
 
-        return parent::getPanel('Cadastrar Usuário > Icomon',$content,'testimonies');
+        return parent::getPanel('Cadastrar Usuário > Icomon',$content,'users');
     }
 
     public static function setNewUser($request){
@@ -73,36 +49,12 @@ class User extends Page{
         $request->getRouter()->redirect('/admin/users/' .$obUser->id.'/edit?status=created');
     }
 
-    private static function getStatus($request){
-        $queryParams = $request->getQueryParams();
-
-        if(!isset($queryParams['status'])) return '';
-
-        switch ($queryParams['status']) {
-            case 'created':
-                return Alert::getSuccess('Usuário cadastrado com sucesso!');
-                break;
-            case 'updated':
-                return Alert::getSuccess('Usuário atualizado com sucesso!');
-                break;
-            case 'deleted':
-                return Alert::getSuccess('Usuário apagado com sucesso!');
-                break;
-            case 'duplicated':
-                return Alert::getError('O E-mail digitado já está em uso.');
-                break;
-
-        }
-
-    }
-
     public static function getEditUser($request,$id){
         $obUser = EntityUser::getUserById($id);
 
         if(!$obUser instanceof EntityUser){
             $request->getRouter()->redirect('/admin/users');
         }
-
 
         $content = View::render('admin/modules/users/form',[
             'title'    => 'Editar Usuário',
@@ -163,5 +115,49 @@ class User extends Page{
 
         $obUser->excluir();
         $request->getRouter()->redirect('/admin/users?status=deleted');
+    }
+
+
+    private static function getUserItems($request,&$obPagination){
+        $itens = '';
+
+        $quantidadetotal = EntityUser::getUsers(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
+
+        $queryParams = $request->getQueryParams();
+        $paginaAtual = $queryParams['page'] ?? 1;
+        $obPagination = new Pagination($quantidadetotal, $paginaAtual, 5);
+        $results = EntityUser::getUsers(null, 'id DESC',$obPagination->getLimit());
+
+        while($obUser = $results->fetchObject(EntityUser::class)){
+            $itens .= View::render('admin/modules/users/item', [
+                'id'         => $obUser->id,
+                'nome'       => $obUser->nome,
+                'email'      => $obUser->email         
+            ]);
+        }
+
+        return $itens;
+    }
+
+    private static function getStatus($request){
+        $queryParams = $request->getQueryParams();
+
+        if(!isset($queryParams['status'])) return '';
+
+        switch ($queryParams['status']) {
+            case 'created':
+                return Alert::getSuccess('Usuário cadastrado com sucesso!');
+                break;
+            case 'updated':
+                return Alert::getSuccess('Usuário atualizado com sucesso!');
+                break;
+            case 'deleted':
+                return Alert::getSuccess('Usuário apagado com sucesso!');
+                break;
+            case 'duplicated':
+                return Alert::getError('O E-mail digitado já está em uso.');
+                break;
+        }
+
     }
 }

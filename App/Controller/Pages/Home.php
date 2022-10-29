@@ -12,6 +12,7 @@ class Home extends Page {
         $content = View::render('pages/home', [
             'name'          => $obOrganization->name
         ]);
+        
         return parent::getPage('ICOMON', $content);
     }
 }

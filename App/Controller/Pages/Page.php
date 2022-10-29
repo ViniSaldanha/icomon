@@ -24,9 +24,7 @@ class Page {
         if(count($pages) <= 1) return '';
 
         $links = '';
-
         $url = $request->getRouter()->getCurrentUrl();
-
         $queryParams = $request->getQueryParams();
 
         foreach($pages as $page){
@@ -39,8 +37,8 @@ class Page {
                 'link' => $link,
                 'active' => $page['current'] ? 'active' : ''
             ]);
-
         }
+
         return View::render('pages/pagination/box', [
             'links' => $links
         ]);

@@ -23,35 +23,6 @@ class Router{
         $this->setPrefix();
     }
 
-    private function setPrefix(){
-        $parseUrl = parse_url($this->url);
-        $this->prefix = $parseUrl['path'] ?? '';
- 
-    }
-
-    private function addRoute($method,$route,$params = []){
-        foreach($params as $key=>$value){
-            if($value instanceof Closure){
-                $params['controller'] = $value;
-                unset($params[$key]);
-                continue;
-            }
-        }
-
-        $params['middlewares'] = $params['middlewares'] ?? [];
-
-        $params['variables'] = [];
-
-        $patternVariable = '/{(.*?)}/';
-        if(preg_match_all($patternVariable,$route,$matches)){
-            $route = preg_replace($patternVariable,'(.*?)',$route);
-            $params['variables'] = $matches[1];
-        }
-
-        $patternRoute = '/^' .str_replace('/','\/',$route).'$/';
-        $this->routes[$patternRoute][$method] = $params;
-    }
-
     public function get($route,$params = []){
         return $this->addRoute('GET',$route,$params);
 
@@ -72,13 +43,40 @@ class Router{
 
     }
 
-    private function getUri(){
-        $uri = $this->request->getUri();
+    public function run(){
+        try{
+            $route = $this->getRoute();
 
-        $xUri = strlen($this->prefix) ? explode($this->prefix,$uri) : [$uri];
+            if(!isset($route['controller'])){
+                throw new Exception("a URL não pode ser processada", 500);
+            }
 
-        return end($xUri);
+            $args = [];
+
+            $reflection = new ReflectionFunction($route['controller']);
+            foreach($reflection->getParameters() as $parameter){
+                $name = $parameter->getName();
+                $args[$name] = $route['variables'][$name] ?? '';
+            }
+
+            return (new MiddlewareQueue($route['middlewares'],$route['controller'],$args))->next($this->request); 
+
+        }catch(Exception $e){
+            return new Response($e->getCode(),$e->GetMessage());
+        }
     }
+
+    public function getCurrentUrl(){
+        return $this->url.$this->getUri();
+    }
+
+    public function redirect($route){
+        $url = $this->url.$route;
+
+        header('location: '.$url);
+        exit;
+    }
+
 
     private function getRoute(){
         $uri = $this->getUri();
@@ -104,37 +102,41 @@ class Router{
         
         throw new Exception("URL não encontrada", 404);
     }
-
-    public function run(){
-        try{
-            $route = $this->getRoute();
-
-            if(!isset($route['controller'])){
-                throw new Exception("a URL não pode ser processada", 500);
+    
+    private function setPrefix(){
+        $parseUrl = parse_url($this->url);
+        $this->prefix = $parseUrl['path'] ?? '';
+ 
+    }
+    
+    private function addRoute($method,$route,$params = []){
+        foreach($params as $key=>$value){
+            if($value instanceof Closure){
+                $params['controller'] = $value;
+                unset($params[$key]);
+                continue;
             }
-
-            $args = [];
-
-            $reflection = new ReflectionFunction($route['controller']);
-            foreach($reflection->getParameters() as $parameter){
-                $name = $parameter->getName();
-                $args[$name] = $route['variables'][$name] ?? '';
-            }
-
-            return (new MiddlewareQueue($route['middlewares'],$route['controller'],$args))->next($this->request); 
-
-        }catch(Exception $e){
-            return new Response($e->getCode(),$e->GetMessage());
         }
-    }
-    public function getCurrentUrl(){
-        return $this->url.$this->getUri();
+
+        $params['middlewares'] = $params['middlewares'] ?? [];
+
+        $params['variables'] = [];
+
+        $patternVariable = '/{(.*?)}/';
+        if(preg_match_all($patternVariable,$route,$matches)){
+            $route = preg_replace($patternVariable,'(.*?)',$route);
+            $params['variables'] = $matches[1];
+        }
+
+        $patternRoute = '/^' .str_replace('/','\/',$route).'$/';
+        $this->routes[$patternRoute][$method] = $params;
     }
 
-    public function redirect($route){
-        $url = $this->url.$route;
+    private function getUri(){
+        $uri = $this->request->getUri();
 
-        header('location: '.$url);
-        exit;
+        $xUri = strlen($this->prefix) ? explode($this->prefix,$uri) : [$uri];
+
+        return end($xUri);
     }
 }
