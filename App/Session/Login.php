@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Session\Admin;
+namespace App\Session;
 
 class Login{
 
@@ -8,11 +8,9 @@ class Login{
         if(session_status() != PHP_SESSION_ACTIVE){
             session_start();
         }
-
     }
     
     public static function Login($obUser){
-
         self::init();
 
         $_SESSION['admin']['usuario'] = [
@@ -25,14 +23,12 @@ class Login{
     }
 
     public static function isLogged(){
-        
         self::init();
 
         return isset($_SESSION['admin']['usuario']['id']);
     }
 
     public static function logout(){
-        
         self::init();
 
         unset($_SESSION['admin']['usuario']);

@@ -5,15 +5,10 @@ namespace App\Http;
 class Request{
 
     private $router;
-
     private $httpMethod;
-
     private $uri;
-
     private $queryParams = [];
-
     private $postVars = [];
-
     private $headers = [];
 
     public function __construct($router){
@@ -27,7 +22,6 @@ class Request{
 
     private function setUri(){
         $this->uri = $_SERVER['REQUEST_URI'] ?? '';
-
         $xURI = explode('?',$this->uri);
         $this->uri = $xURI[0];
     }
@@ -39,22 +33,18 @@ class Request{
     public function getHttpMethod(){
         return $this->httpMethod;
     }
-
     
     public function getUri(){
         return $this->uri;
     }
-
     
     public function getHeaders(){
         return $this->headers;
     }
-
     
     public function getQueryParams(){
         return $this->queryParams;
     }
-
     
     public function getPostVars(){
         return $this->postVars;

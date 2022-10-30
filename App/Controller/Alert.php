@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller;
 
 use \App\Utils\View;
 
 class Alert{
 
     public static function getError($message){
-        return View::render('admin/alert/status',[
+        return View::render('components/alert/status',[
             'tipo' => 'danger',
             'mensagem' => $message
         ]);
     }
 
     public static function getSuccess($message){
-        return View::render('admin/alert/status',[
+        return View::render('components/alert/status',[
             'tipo' => 'success',
             'mensagem' => $message
         ]);

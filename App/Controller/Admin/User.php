@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Alert;
+use App\Controller\Page;
 use \App\Utils\View;
 use \App\Model\Entity\User as EntityUser;
 use \WilliamCosta\DatabaseManager\Pagination;
@@ -9,24 +11,24 @@ use \WilliamCosta\DatabaseManager\Pagination;
 class User extends Page{
 
     public static function getUsers($request){
-        $content = View::render('admin/modules/users/index',[
+        $content = View::render('admin/users/index',[
             'itens' => self::getUserItems($request,$obPagination),
             'pagination' => parent::getPagination($request,$obPagination),
             'status'    => self::getStatus($request)
         ]);
 
-        return parent::getPanel('Usuários > Icomon',$content,'users');
+        return parent::getPage('Usuários > Icomon', $content, 'users');
     }
 
     public static function getNewUser($request){
-        $content = View::render('admin/modules/users/form',[
+        $content = View::render('admin/users/form',[
             'title'     => 'Cadastrar usuário',
             'nome'      => '',
             'email'     => '',
             'status'    => self::getStatus($request)
         ]);
 
-        return parent::getPanel('Cadastrar Usuário > Icomon',$content,'users');
+        return parent::getPage('Cadastrar Usuário > Icomon', $content, 'users');
     }
 
     public static function setNewUser($request){
@@ -56,14 +58,14 @@ class User extends Page{
             $request->getRouter()->redirect('/admin/users');
         }
 
-        $content = View::render('admin/modules/users/form',[
+        $content = View::render('admin/users/form',[
             'title'    => 'Editar Usuário',
             'nome'     => $obUser->nome,
             'email'    => $obUser->email,
             'status'   => self::getStatus($request)
         ]);
 
-        return parent::getPanel('Editar Usuário > Icomon',$content,'users');
+        return parent::getPage('Editar Usuário > Icomon', $content, 'users');
     }
 
     public static function setEditUser($request,$id){
@@ -98,12 +100,12 @@ class User extends Page{
             $request->getRouter()->redirect('/admin/users');
         }
 
-        $content = View::render('admin/modules/users/delete',[
+        $content = View::render('admin/users/delete',[
             'nome'  => $obUser->nome,
             'email' => $obUser->email
         ]);
 
-        return parent::getPanel('Excluir Usuário > Icomon',$content,'users');
+        return parent::getPage('Excluir Usuário > Icomon',$content,'users');
     }
 
     public static function setDeleteUser($request,$id){
@@ -129,7 +131,7 @@ class User extends Page{
         $results = EntityUser::getUsers(null, 'id DESC',$obPagination->getLimit());
 
         while($obUser = $results->fetchObject(EntityUser::class)){
-            $itens .= View::render('admin/modules/users/item', [
+            $itens .= View::render('admin/users/item', [
                 'id'         => $obUser->id,
                 'nome'       => $obUser->nome,
                 'email'      => $obUser->email         

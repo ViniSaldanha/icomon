@@ -5,7 +5,7 @@ use \App\Controller\Admin;
 
 $obRouter->get('/admin/users',[
     'middlewares' => [
-        'required-admin-login'    
+        'required-admin-logout'    
     ],
     function($request){
         return new Response(200,Admin\User::getUsers($request));
@@ -14,7 +14,7 @@ $obRouter->get('/admin/users',[
 
 $obRouter->get('/admin/users/new',[
     'middlewares' => [
-        'required-admin-login'    
+        'required-admin-logout'    
     ],
     function($request){
         return new Response(200,Admin\User::getNewUser($request));
@@ -23,7 +23,7 @@ $obRouter->get('/admin/users/new',[
 
 $obRouter->post('/admin/users/new',[
     'middlewares' => [
-        'required-admin-login'    
+        'required-admin-logout'    
     ],
     function($request){
         return new Response(200,Admin\User::setNewUser($request));
@@ -32,7 +32,7 @@ $obRouter->post('/admin/users/new',[
 
 $obRouter->get('/admin/users/{id}/edit',[
     'middlewares' => [
-        'required-admin-login'    
+        'required-admin-logout'    
     ],
     function($request,$id){
         return new Response(200,Admin\User::getEditUser($request,$id));
@@ -41,7 +41,7 @@ $obRouter->get('/admin/users/{id}/edit',[
 
 $obRouter->post('/admin/users/{id}/edit',[
     'middlewares' => [
-        'required-admin-login'    
+        'required-admin-logout'    
     ],
     function($request,$id){
         return new Response(200,Admin\User::setEditUser($request,$id));
@@ -50,7 +50,7 @@ $obRouter->post('/admin/users/{id}/edit',[
 
 $obRouter->get('/admin/users/{id}/delete',[
     'middlewares' => [
-        'required-admin-login'    
+        'required-admin-logout'    
     ],
     function($request,$id){
         return new Response(200,Admin\User::getDeleteUser($request,$id));
@@ -59,7 +59,7 @@ $obRouter->get('/admin/users/{id}/delete',[
 
 $obRouter->post('/admin/users/{id}/delete',[
     'middlewares' => [
-        'required-admin-login'    
+        'required-admin-logout'    
     ],
     function($request,$id){
         return new Response(200,Admin\User::setDeleteUser($request,$id));
