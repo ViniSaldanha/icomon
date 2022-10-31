@@ -48,7 +48,8 @@ class User extends Page{
         $obUser->senha    = password_hash($senha, PASSWORD_DEFAULT);
         $obUser->cadastrar();
 
-        $request->getRouter()->redirect('/admin/users/' .$obUser->id.'/edit?status=created');
+        //$request->getRouter()->redirect('/admin/users/' .$obUser->id.'/edit?status=created');
+        $request->getRouter()->redirect('/admin/users?status=created');
     }
 
     public static function getEditUser($request,$id){

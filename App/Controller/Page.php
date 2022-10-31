@@ -42,7 +42,7 @@ class Page {
         ]);
     }
 
-    public static function getPanel($title,$content,$currentModule){
+    /* public static function getPanel($title,$content,$currentModule){
         $contentPanel = View::render('layout/panel',[
             'menu'     => self::getMenu($currentModule),
             'content'  =>$content
@@ -50,16 +50,18 @@ class Page {
 
         return self::getPage($title,$contentPanel);
 
-    }
+    } */
 
     private static $modules = [
         'home' =>[
             'label' => 'Home',
-            'link'  => URL.'/'
+            'link'  => URL.'/',
+            'icon'  => 'home'
         ],
         'cadastro-ba' =>[
             'label' => 'Cadastro BA',
-            'link'  => URL.'/cadastros/ba'
+            'link'  => URL.'/cadastros/ba',
+            'icon'  => 'table'
         ]
     ];
 
@@ -74,6 +76,7 @@ class Page {
             $links .= View::render('components/menu/link',[
                 'label' => $module['label'],
                 'link'  => $module['link'],
+                'icon'  => $module['icon'],
                 'current' => $hash == $currentModule ? 'active' : ''
             ]);
         }

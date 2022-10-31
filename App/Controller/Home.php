@@ -15,6 +15,6 @@ class Home extends Page {
             'name' => $obOrganization->name
         ]);
         
-        return parent::getPage('ICOMON', $content);
+        return parent::getPage('ICOMON', $content, 'home');
     }
 }
