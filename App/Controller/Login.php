@@ -10,13 +10,9 @@ use \App\Session\Login as SessionAdminLogin;
 class Login extends Page{
 
     public static function getLogin($request,$errorMessage = null){
-        $status = !is_null ($errorMessage) ? Alert::getError($errorMessage) : '';
+        $status = !is_null($errorMessage) ? Alert::getError($errorMessage) : '';
 
-        $content = View::render('login',[
-            'status' => $status 
-        ]);
-
-        return parent::getPage('Login > Icomon',$content);
+        return parent::getLoginPage('Login > Icomon', $status);
     }
 
     public static function setLogin($request){

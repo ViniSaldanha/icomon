@@ -42,6 +42,13 @@ class Page {
         ]);
     }
 
+    public static function getLoginPage($title, $status){
+        return View::render('layout/login', [
+            'title' => $title,
+            'status' => $status
+        ]);
+    }
+
     /* public static function getPanel($title,$content,$currentModule){
         $contentPanel = View::render('layout/panel',[
             'menu'     => self::getMenu($currentModule),
