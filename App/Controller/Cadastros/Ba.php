@@ -16,5 +16,13 @@ class Ba extends Page{
 
         return parent::getPage('Cadastro de BA', $content, 'cadastro-ba');
     }
+
+    public static function getBA($request){
+        $content = View::render('cadastros/ba/new', [
+
+        ]);
+
+        return parent::getPage('Preencher BA', $content, 'Preencher-ba');
+    }
     
 }

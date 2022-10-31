@@ -11,3 +11,12 @@ $obRouter->get('/cadastros/ba',[
         return new Response(200,Cadastros\Ba::getBAs($request));
     }
 ]);
+
+$obRouter->get('/cadastros/ba/new',[
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request){
+        return new Response(200,Cadastros\Ba::getBA($request));
+    }
+]);
