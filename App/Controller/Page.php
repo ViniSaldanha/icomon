@@ -49,16 +49,6 @@ class Page {
         ]);
     }
 
-    /* public static function getPanel($title,$content,$currentModule){
-        $contentPanel = View::render('layout/panel',[
-            'menu'     => self::getMenu($currentModule),
-            'content'  =>$content
-        ]);
-
-        return self::getPage($title,$contentPanel);
-
-    } */
-
     private static $modules = [
         'home' =>[
             'label' => 'Home',
