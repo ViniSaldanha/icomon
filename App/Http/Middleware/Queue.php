@@ -5,13 +5,9 @@ namespace App\Http\Middleware;
 class Queue{
 
     private static $map = [];
-
     private static $default = [];
-
     private $middlewares = [];
-
     private $controller;
-    
     private $controllerArgs = [];
 
     public function __construct($middlewares,$controller,$controllerArgs){
@@ -29,15 +25,12 @@ class Queue{
     }
 
     public function next($request){
-
         if(empty($this->middlewares)) return call_user_func_array($this->controller, $this->controllerArgs);
 
         $middleware = array_shift($this->middlewares);
 
         if(!isset(self::$map[$middleware])){
             throw new \Exception("Problemas ao processar o middleware da requisição", 500);
-
-
         }
 
         $queue = $this;
@@ -46,6 +39,5 @@ class Queue{
         };
 
         return (new self::$map[$middleware])->handle($request,$next);
-
     }
 }

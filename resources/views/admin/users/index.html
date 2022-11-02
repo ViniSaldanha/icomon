@@ -1,0 +1,29 @@
+<div class="container my-3">
+    <h3>Cadastro de Usuários</h3>
+
+    <hr>
+    
+    <a href="{{URL}}/admin/users/new">
+        <button type="button" class="btn btn-success">Cadastrar Usuário</button>
+    </a>
+    
+    <hr>
+    
+    {{status}}
+    
+    <table class="table table-light table-striped table-sm">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th style="width:200px;">Acões</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{itens}}
+        </tbody>
+    </table>
+    
+    {{pagination}}
+</div>
