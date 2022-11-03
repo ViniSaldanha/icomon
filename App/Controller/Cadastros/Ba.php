@@ -27,10 +27,6 @@ class Ba extends Page{
     }
 
     public static function loadFile(){
-        /* echo "<pre>";
-        print_r($_FILES);
-        echo "</pre>"; exit; */
-
         if(!isset($_FILES['arquivo-csv'])){
             die("Ocorreu um erro ao carregar o arquivo\n");
         }
@@ -53,10 +49,5 @@ class Ba extends Page{
         ]);
 
         return $content;
-        /* echo "<pre>";
-        print_r($content);
-        echo "</pre>"; exit; */
-
-        //return parent::getPage('Preencher BA', $content, 'cadastro-ba');
     }
 }
