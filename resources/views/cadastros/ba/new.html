@@ -1,6 +1,23 @@
 <div class="container my-3">
-
     <h4 class="mb-3">Cadastro de BA</h4>
+    
+    <hr>
+    
+    <div class="row">
+    <!-- <form id="formLoadFile" method="post" action="/cadastros/ba/loadFile" enctype="multipart/form-data" class="row"> -->
+        <div class="col">
+            <input class="form-control form-control-sm" type="file" name="arquivo-csv" id="arquivo-csv" placeholder="Carregar arquivo CSV">
+        </div>
+        <div class="col">
+            <!-- <button class="btn btn-success btn-sm">Carregar</button> -->
+        </div>
+    <!-- </form> -->
+    </div>
+    <div class="container" id="dados-csv">
+        
+    </div>
+    <hr>
+
     <form class="needs-validation" novalidate="">
         <div class="row g-3">
             <div class="col-md-3">
@@ -83,30 +100,36 @@
                 </div>
             </div>
 
-            <div class="col-md-1">
-                <label for="zip" class="form-label">Sla:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Sla code required.
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="col-md-12">
+                        <label for="zip" class="form-label">Sla:</label>
+                        <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            Sla code required.
+                        </div>
+                    </div>
+        
+                    <div class="col-md-12">
+                        <label for="zip" class="form-label">Cod:</label>
+                        <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            Cod code required.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="col-md-12">
+                        <label for="floatingTextarea2" class="form-label">OBS_OI:</label>
+                        <textarea class="form-control form-control-sm" placeholder="Leave a comment here" id="floatingTextarea2" cols="100" rows="3"></textarea>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-1">
-                <label for="zip" class="form-label">Cod:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Cod code required.
-                </div>
-            </div>
+            
+            <hr>
 
-            <div class="form-floating">
-                <textarea class="form-control form-control-sm" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px; width:400px ;"></textarea>
-                <label for="floatingTextarea2">OBS_OI:</label>
-              </div>
-
-              <hr>
-
-              <div class="col-md-2">
+            <div class="col-md-2">
                 <label for="state" class="form-label">Nome_N°_Cabo:</label>
                 <select class="form-select form-select-sm" id="state" required="">
                     <option value=""></option>
@@ -406,9 +429,9 @@
             <div class="mb-3">
                 <label for="formFileMultiple" class="form-label"><h5>ADICIONAR CROQUI:</h5></label>
                 <input class="form-control form-control-sm" type="file" id="formFileMultiple" multiple>
-              </div>
+            </div>
 
-              <div class="col-md-2">
+            <div class="col-md-2">
                 <label for="state" class="form-label">Supervisor:</label>
                 <select class="form-select form-select-sm" id="state" required="">
                     <option value=""></option>
@@ -426,3 +449,5 @@
         <button class="w-100 btn btn-success btn-lg" type="submit">Enviar Cadastro</button>
     </form>
 </div>
+
+<script src="/resources/views/cadastros/ba/carrega-csv.js"></script>

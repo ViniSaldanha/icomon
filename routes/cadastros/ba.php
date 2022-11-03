@@ -20,3 +20,12 @@ $obRouter->get('/cadastros/ba/new',[
         return new Response(200,Cadastros\Ba::getBA($request));
     }
 ]);
+
+$obRouter->post('/cadastros/ba/loadFile', [
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request){
+        return new Response(200,Cadastros\Ba::loadFile());
+    }
+]);

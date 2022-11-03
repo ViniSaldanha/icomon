@@ -2,8 +2,9 @@
 
 namespace App\Controller\Cadastros;
 
-use App\Controller\Page;
-use App\Utils\View;
+use \App\Controller\Page;
+use \App\Utils\View;
+use \App\Utils\CSV;
 
 class Ba extends Page{
     
@@ -22,7 +23,40 @@ class Ba extends Page{
 
         ]);
 
-        return parent::getPage('Preencher BA', $content, 'Preencher-ba');
+        return parent::getPage('Preencher BA', $content, 'cadastro-ba');
     }
-    
+
+    public static function loadFile(){
+        /* echo "<pre>";
+        print_r($_FILES);
+        echo "</pre>"; exit; */
+
+        if(!isset($_FILES['arquivo-csv'])){
+            die("Ocorreu um erro ao carregar o arquivo\n");
+        }
+
+        $filePath = $_FILES['arquivo-csv']['tmp_name'];
+        $dados = CSV::lerArquivo($filePath, true, ';');
+        $linhas = '';
+
+        foreach($dados as $linha){
+            $linhas .= View::render('cadastros/ba/dados-csv-item', [
+                'uf'            => $linha['UF'],
+                'localidade'    => $linha['LOCALIDADE'],
+                'estacao'       => $linha['ESTACAO'],
+                'central'       => $linha['CENTRAL']
+            ]);
+        }
+        
+        $content = View::render('cadastros/ba/dados-csv', [
+            'itens' => $linhas
+        ]);
+
+        return $content;
+        /* echo "<pre>";
+        print_r($content);
+        echo "</pre>"; exit; */
+
+        //return parent::getPage('Preencher BA', $content, 'cadastro-ba');
+    }
 }
