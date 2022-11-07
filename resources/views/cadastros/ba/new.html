@@ -2,16 +2,38 @@
     <h4 class="mb-3">Cadastro de BA</h4>
     
     <hr>
-    
-    <div class="row">
-        <div class="col-md-6">
-            <input class="form-control form-control-sm" type="file" name="arquivo-csv" id="arquivo-csv" placeholder="Carregar arquivo CSV">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Carregar CSV
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <div class="row">
+                    <div class="input-group">
+                        <input type="file" class="form-control form-control-sm" id="arquivo-csv" placeholder="Carregar arquivo CSV" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button class="btn btn-outline-secondary btn-sm" type="button" id="inputGroupFileAddon04">Button</button>
+                    </div>
+                </div>
+                <div class="container" id="dados-csv">
+                    
+                </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="container" id="dados-csv">
-        
-    </div>
     <hr>
+
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
+              Preencher Formulario
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
 
     <form class="needs-validation" novalidate="">
         <div class="row g-3">
@@ -443,6 +465,10 @@
 
         <button class="w-100 btn btn-success btn-lg" type="submit">Enviar Cadastro</button>
     </form>
+</div>
+</div>
+</div>
+
 </div>
 
 <script src="/resources/views/cadastros/ba/carrega-csv.js"></script>
