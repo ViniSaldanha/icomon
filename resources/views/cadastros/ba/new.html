@@ -14,7 +14,8 @@
                 <div class="row">
                     <div class="input-group">
                         <input type="file" class="form-control form-control-sm" id="arquivo-csv" placeholder="Carregar arquivo CSV" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button class="btn btn-outline-secondary btn-sm" type="button" id="inputGroupFileAddon04">Button</button>
+                        <button class="btn btn-primary btn-sm" id="btn-load-file" onclick="renderTableFromFile()">Carregar</button>
+                        <div id="progressBar"><span></span></div>
                     </div>
                 </div>
                 <div class="container" id="dados-csv">
@@ -471,4 +472,4 @@
 
 </div>
 
-<script src="/resources/views/cadastros/ba/carrega-csv.js"></script>
+<!-- <script src="/resources/views/cadastros/ba/carrega-csv.js"></script> -->
