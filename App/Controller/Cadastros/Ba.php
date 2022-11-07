@@ -7,6 +7,7 @@ use \App\Utils\View;
 use \App\Utils\CSV;
 
 class Ba extends Page{
+    const SCRIPT_SRC = "/resources/views/cadastros/ba/carrega-csv.js";
     
     public static function getBAs($request){
         $content = View::render('cadastros/ba/index', [
@@ -23,10 +24,10 @@ class Ba extends Page{
 
         ]);
 
-        return parent::getPage('Preencher BA', $content, 'cadastro-ba');
+        return parent::getPage('Preencher BA', $content, 'cadastro-ba', Ba::SCRIPT_SRC);
     }
 
-    public static function loadFile(){
+    public static function renderTableFromFile(){
         if(!isset($_FILES['arquivo-csv'])){
             die("Ocorreu um erro ao carregar o arquivo\n");
         }

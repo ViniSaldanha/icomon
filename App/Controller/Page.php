@@ -32,13 +32,14 @@ class Page {
         ]);
     }
 
-    public static function getPage($title, $content, $currentModule = ''){
+    public static function getPage($title, $content, $currentModule = '', $scriptSrc = ''){
         return View::render('layout/page', [
             'title' => $title,
             'header' => self::getHeader(),
             'menu'   => self::getMenu($currentModule),
             'content' => $content,
-            'footer' => self::getFooter()
+            'footer' => self::getFooter(),
+            'script' => $scriptSrc
         ]);
     }
 
