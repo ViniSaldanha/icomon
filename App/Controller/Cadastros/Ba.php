@@ -38,10 +38,11 @@ class Ba extends Page{
 
         foreach($dados as $linha){
             $linhas .= View::render('cadastros/ba/dados-csv-item', [
-                'uf'            => $linha['UF'],
-                'localidade'    => $linha['LOCALIDADE'],
+                'ba'            => $linha['BA'],
+                'backbone'      => $linha['BACKBONE'],
                 'estacao'       => $linha['ESTACAO'],
-                'central'       => $linha['CENTRAL']
+                'central'       => $linha['CENTRAL'],
+                'ga'            => $linha['GA']
             ]);
         }
         
