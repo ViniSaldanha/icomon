@@ -9,8 +9,8 @@ async function renderTableFromFile(){
     document.getElementById('dados-csv').innerHTML = await response.text();
 }
 
-async function getItemFromCsv(index){
-    const id = index.rowIndex - 1;
+async function getItemFromCsv(trClicked){
+    const id = trClicked.rowIndex - 1;
     const response = await fetch(`/cadastros/ba/getItemFromCsv/${id}`);
     const responseText = await response.text();
     const json = JSON.parse(responseText);
