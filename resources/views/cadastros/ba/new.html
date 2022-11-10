@@ -1,472 +1,515 @@
 <div class="container my-3">
     <h4 class="mb-3">Cadastro de BA</h4>
-    
+
     <hr>
     <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
-          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-              Carregar CSV
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-            <div class="accordion-body">
-                <div class="row">
-                    <div class="input-group">
-                        <input type="file" class="form-control form-control-sm" name="arquivo-csv" id="fileupload" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <button class="btn btn-primary btn-sm" id="btn-load-file" onclick="renderTableFromFile()">Carregar</button>
-                        <div id="progressBar"><span></span></div>
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseOne">
+                    Carregar CSV
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingOne">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="input-group">
+                            <input type="file" class="form-control form-control-sm" name="arquivo-csv" id="fileupload"
+                                aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <button class="btn btn-primary btn-sm" id="btn-load-file"
+                                onclick="renderTableFromFile()">Carregar</button>
+                            <div id="progressBar"><span></span></div>
+                        </div>
+                    </div>
+                    <div class="container" id="dados-csv">
+
                     </div>
                 </div>
-                <div class="container" id="dados-csv">
-                    
-                </div>
             </div>
-          </div>
         </div>
-    <hr>
+        <hr>
 
         <div class="accordion-item">
-          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-              Preencher Formulario
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-            <div class="accordion-body">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseTwo">
+                    Preencher Formulario
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
 
-    <form class="needs-validation" novalidate="">
-        <div class="row g-3">
-            <div class="col-md-3">
-                <label for="zip" class="form-label">BA:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    BA code required.
+                    <form class="needs-validation" novalidate="">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="ba" class="form-label">BA:</label>
+                                <input type="text" class="form-control form-control-sm" id="ba" required>
+                                <div class="invalid-feedback">
+                                    BA code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="backbone" class="form-label">Backbone:</label>
+                                <input type="text" class="form-control form-control-sm" id="backbone">
+                                <div class="invalid-feedback" required>
+                                    Backbone code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="mes" class="form-label">Mês:</label>
+                                <input type="text" class="form-control form-control-sm" id="mes" required>
+                                <div class="invalid-feedback">
+                                    Mês code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <label for="estacao" class="form-label">Estação:</label>
+                                <input type="text" class="form-control form-control-sm" id="estacao" required>
+                                <div class="invalid-feedback">
+                                    Estação code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <label for="zip" class="form-label">MNT FO:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    MNT FO code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <label for="indicador_fibra" class="form-label">Indicador:</label>
+                                <input type="text" class="form-control form-control-sm" id="indicador_fibra" required>
+                                <div class="invalid-feedback">
+                                    Indicador code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="abertura" class="form-label">Abertura:</label>
+                                <input type="datetime-local" class="form-control form-control-sm" id="abertura" required>
+                                <div class="invalid-feedback">
+                                    Abertura code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="promessa" class="form-label">Promessa:</label>
+                                <input type="datetime-local" class="form-control form-control-sm" id="promessa" required>
+                                <div class="invalid-feedback">
+                                    Promessa code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="proximo_acionamento" class="form-label">Acionamento:</label>
+                                <input type="datetime-local" class="form-control form-control-sm" id="proximo_acionamento">
+                                <div class="invalid-feedback">
+                                    Acionamento code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="baixa" class="form-label">Baixa:</label>
+                                <input type="datetime-local" class="form-control form-control-sm" id="baixa" required>
+                                <div class="invalid-feedback">
+                                    Baixa code required.
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="col-md-12">
+                                        <label for="sla" class="form-label">Sla:</label>
+                                        <input type="text" class="form-control form-control-sm" id="sla" required>
+                                        <div class="invalid-feedback">
+                                            Sla code required.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label for="cod_atividade" class="form-label">Cod:</label>
+                                        <input type="text" class="form-control form-control-sm" id="cod_atividade" required>
+                                        <div class="invalid-feedback">
+                                            Cod code required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="col-md-12">
+                                        <label for="floatingTextarea2" class="form-label">OBS_OI:</label>
+                                        <textarea class="form-control form-control-sm" 
+                                            placeholder="Leave a comment here" id="floatingTextarea2" cols="100" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <hr>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">Nome_N°_Cabo:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">Entre Localidades:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">MA:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">Tipo_Utilização:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">Causa Romp:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">Sub Causa:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">BA causa comun:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    BA code required.
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-2">
+                                <h6 class="mb-2">Há_pendência_35d?</h6>
+                                <div class="form-check">
+                                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input"
+                                        checked="" required="">
+                                    <label class="form-check-label" for="sim">Sim</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input"
+                                        required="">
+                                    <label class="form-check-label" for="não">Não</label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-2">
+                                <h6 class="mb-2">Necessário JM?</h6>
+                                <div class="form-check">
+                                    <input id="credit" name="paymentMethod2" type="radio" class="form-check-input"
+                                        checked="" required="">
+                                    <label class="form-check-label" for="sim">Sim</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="debit" name="paymentMethod2" type="radio" class="form-check-input"
+                                        required="">
+                                    <label class="form-check-label" for="não">Não</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="zip" class="form-label">NUM_JM:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    NUM_JM code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="zip" class="form-label">DATA_ABER_JANELA:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    DATA_ABER_JANELA code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2" style="height: 100px; width:200px ;">
+                                <label for="zip" class="form-label">Prev_Regularização:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Prev_Regularização code required.
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <label for="exampleFormControlTextarea1" class="form-label">Informe_Pendência:</label>
+                                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1"
+                                    style="height: 100px; width:250px ;"></textarea>
+                            </div>
+
+                            <div class="col-2">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                    style="margin-left: 80px ;">Material_Pendência_35d:</label>
+                                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1"
+                                    style="height: 100px; width:250px ; margin-left: 80px;"></textarea>
+                            </div>
+
+                            <div class="col-md-3" style="margin-left: 160px;">
+                                <label for="state" class="form-label">Resp_Pendência_35d:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="zip" class="form-label">PRAZO:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    PRAZO code required.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                    style="margin-left: 20px;">Justificar_fora_do_Prazo:</label>
+                                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1"
+                                    style="height: 100px; width:250px ; margin-left: 20px;"></textarea>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                    style="margin-left: 100px ;">Cirq._e_cli_envolvidos:</label>
+                                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1"
+                                    style="height: 100px; width:250px ; margin-left: 100px;"></textarea>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                    style="margin-left: 80px; margin-left: 184px;">Descrição_do_corrido:</label>
+                                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1"
+                                    style="height: 100px; width:250px ; margin-left: 184px;"></textarea>
+                            </div>
+                            <hr>
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">TEMPO_CGR/ENC:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    TEMPO_CGR/ENC code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Numero_PROT_BO:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Numero_PROT_BO code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">OBS_NÃO_Aber_BO:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    OBS_NÃO_Aber_BO code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Remanjo_de_Fibra_de:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Remanjo_de_Fibra_de code required.
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <h6 class="mb-2">Usou cabo?</h6>
+                                <div class="form-check">
+                                    <input id="UsouCabo" name="paymentMethod3" type="radio" class="form-check-input"
+                                        checked="" required="">
+                                    <label class="form-check-label" for="sim">Sim</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="NaoCabo" name="paymentMethod3" type="radio" class="form-check-input"
+                                        required="">
+                                    <label class="form-check-label" for="não">Não</label>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="zip" class="form-label">Metro cabo utilizado:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Metro_Utilizado code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="zip" class="form-label">Lote Cabo:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Lote_cabo code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">Cod_sap_cabo:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="zip" class="form-label">Coordenadas Cabo:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Coordenadas_cabo code required.
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Quantidade_CX_Usada:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Quantidade_CX_Usada code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Numero_Emenda_ENPE:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Numero_Emenda_ENPE code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Coordenadas_ENPE:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Coordenadas_ENPE code required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Endereço_ENPE/CABO:</label>
+                                <input type="text" class="form-control form-control-sm" id="zip" placeholder=""
+                                    required="">
+                                <div class="invalid-feedback">
+                                    Endereço_ENPE code required.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">
+                                    <h5>ADICIONAR CROQUI:</h5>
+                                </label>
+                                <input class="form-control form-control-sm" type="file" id="formFileMultiple" multiple>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="state" class="form-label">Supervisor:</label>
+                                <select class="form-select form-select-sm" id="state" required="">
+                                    <option value=""></option>
+                                    <option>Opcao 1</option>
+                                    <option>Opcao 2</option>
+                                    <option>Opcao 3</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+
+                            <hr class="my-5">
+
+                            <button class="w-100 btn btn-success btn-lg" type="submit">Enviar Cadastro</button>
+                    </form>
                 </div>
             </div>
-
-            <div class="col-md-2">
-                <label for="zip" class="form-label">Backbone:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Backbone code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Mês:</label>
-                <input type="datetime-local" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Mês code required.
-                </div>
-            </div>
-
-            <div class="col-md-1">
-                <label for="zip" class="form-label">Estação:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Estação code required.
-                </div>
-            </div>
-
-            <div class="col-md-1">
-                <label for="zip" class="form-label">MNT FO:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    MNT FO code required.
-                </div>
-            </div>
-
-            <div class="col-md-1">
-                <label for="zip" class="form-label">Indicador:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Indicador code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Abertura:</label>
-                <input type="datetime-local" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Abertura code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Promessa:</label>
-                <input type="datetime-local" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Promessa code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Acionamento:</label>
-                <input type="datetime-local" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Acionamento code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Baixa:</label>
-                <input type="datetime-local" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Baixa code required.
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="col-md-12">
-                        <label for="zip" class="form-label">Sla:</label>
-                        <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                        <div class="invalid-feedback">
-                            Sla code required.
-                        </div>
-                    </div>
-        
-                    <div class="col-md-12">
-                        <label for="zip" class="form-label">Cod:</label>
-                        <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                        <div class="invalid-feedback">
-                            Cod code required.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="col-md-12">
-                        <label for="floatingTextarea2" class="form-label">OBS_OI:</label>
-                        <textarea class="form-control form-control-sm" placeholder="Leave a comment here" id="floatingTextarea2" cols="100" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            
-            <hr>
-
-            <div class="col-md-2">
-                <label for="state" class="form-label">Nome_N°_Cabo:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="state" class="form-label">Entre Localidades:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="state" class="form-label">MA:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="state" class="form-label">Tipo_Utilização:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="state" class="form-label">Causa Romp:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-              
-            <div class="col-md-2">
-                <label for="state" class="form-label">Sub Causa:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">BA causa comun:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    BA code required.
-                </div>
-            </div>
-
-            
-
-            <div class="col-2">
-                <h6 class="mb-2">Há_pendência_35d?</h6>
-                <div class="form-check">
-                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-                    <label class="form-check-label" for="sim">Sim</label>
-                </div>
-                <div class="form-check">
-                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-                    <label class="form-check-label" for="não">Não</label>
-                </div>
-            </div>
-
-           
-
-            <div class="col-2" > 
-                <h6 class="mb-2">Necessário JM?</h6>
-                <div class="form-check">
-                    <input id="credit" name="paymentMethod2" type="radio" class="form-check-input" checked="" required="">
-                    <label class="form-check-label" for="sim">Sim</label>
-                </div>
-                <div class="form-check">
-                    <input id="debit" name="paymentMethod2" type="radio" class="form-check-input" required="">
-                    <label class="form-check-label" for="não">Não</label>
-                </div>
-            </div>
-           
-            <div class="col-md-2">
-                <label for="zip" class="form-label">NUM_JM:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    NUM_JM code required.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="zip" class="form-label">DATA_ABER_JANELA:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    DATA_ABER_JANELA code required.
-                </div>
-            </div>
-
-            <div class="col-md-2" style="height: 100px; width:200px ;">
-                <label for="zip" class="form-label">Prev_Regularização:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Prev_Regularização code required.
-                </div>
-            </div>
-
-            <div class="col-2">
-                <label for="exampleFormControlTextarea1" class="form-label">Informe_Pendência:</label>
-                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" style="height: 100px; width:250px ;" ></textarea>
-            </div>
-            
-            <div class="col-2">
-                <label for="exampleFormControlTextarea1" class="form-label" style="margin-left: 80px ;">Material_Pendência_35d:</label>
-                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" style="height: 100px; width:250px ; margin-left: 80px;" ></textarea>
-            </div>
-
-            <div class="col-md-3" style="margin-left: 160px;">
-                <label for="state" class="form-label">Resp_Pendência_35d:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="zip" class="form-label">PRAZO:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    PRAZO code required.
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <label for="exampleFormControlTextarea1" class="form-label" style="margin-left: 20px;">Justificar_fora_do_Prazo:</label>
-                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" style="height: 100px; width:250px ; margin-left: 20px;" ></textarea>
-            </div>
-            
-            <div class="col-sm-2">
-                <label for="exampleFormControlTextarea1" class="form-label" style="margin-left: 100px ;">Cirq._e_cli_envolvidos:</label>
-                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" style="height: 100px; width:250px ; margin-left: 100px;" ></textarea>
-            </div>
-
-            <div class="col-sm-2">
-                <label for="exampleFormControlTextarea1" class="form-label" style="margin-left: 80px; margin-left: 184px;">Descrição_do_corrido:</label>
-                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" style="height: 100px; width:250px ; margin-left: 184px;" ></textarea>
-            </div>
-            <hr>
-            <div class="col-md-3">
-                <label for="zip" class="form-label">TEMPO_CGR/ENC:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    TEMPO_CGR/ENC code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Numero_PROT_BO:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Numero_PROT_BO code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">OBS_NÃO_Aber_BO:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    OBS_NÃO_Aber_BO code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Remanjo_de_Fibra_de:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Remanjo_de_Fibra_de code required.
-                </div>
-            </div>
-
-            <div class="col-2" > 
-                <h6 class="mb-2">Usou cabo?</h6>
-                <div class="form-check">
-                    <input id="UsouCabo" name="paymentMethod3" type="radio" class="form-check-input" checked="" required="">
-                    <label class="form-check-label" for="sim">Sim</label>
-                </div>
-                <div class="form-check">
-                    <input id="NaoCabo" name="paymentMethod3" type="radio" class="form-check-input" required="">
-                    <label class="form-check-label" for="não">Não</label>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label for="zip" class="form-label">Metro cabo utilizado:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Metro_Utilizado code required.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="zip" class="form-label">Lote Cabo:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Lote_cabo code required.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="state" class="form-label">Cod_sap_cabo:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <label for="zip" class="form-label">Coordenadas Cabo:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Coordenadas_cabo code required.
-                </div>
-            </div>
-
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Quantidade_CX_Usada:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Quantidade_CX_Usada code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Numero_Emenda_ENPE:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Numero_Emenda_ENPE code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Coordenadas_ENPE:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Coordenadas_ENPE code required.
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <label for="zip" class="form-label">Endereço_ENPE/CABO:</label>
-                <input type="text" class="form-control form-control-sm" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                    Endereço_ENPE code required.
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="formFileMultiple" class="form-label"><h5>ADICIONAR CROQUI:</h5></label>
-                <input class="form-control form-control-sm" type="file" id="formFileMultiple" multiple>
-            </div>
-
-            <div class="col-md-2">
-                <label for="state" class="form-label">Supervisor:</label>
-                <select class="form-select form-select-sm" id="state" required="">
-                    <option value=""></option>
-                    <option>Opcao 1</option>
-                    <option>Opcao 2</option>
-                    <option>Opcao 3</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-
-        <hr class="my-5">
-
-        <button class="w-100 btn btn-success btn-lg" type="submit">Enviar Cadastro</button>
-    </form>
-         </div>
         </div>
-    </div>
 
-</div>
+    </div>

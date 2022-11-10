@@ -7,7 +7,7 @@ use \App\Utils\View;
 use \App\Utils\CSV;
 
 class Ba extends Page{
-    const SCRIPT_SRC = "/resources/views/cadastros/ba/carrega-csv.js";
+    const SCRIPT_SRC = "/resources/views/cadastros/ba/dados-csv.js";
     
     public static function getBAs($request){
         $content = View::render('cadastros/ba/index', [
@@ -33,23 +33,34 @@ class Ba extends Page{
         }
 
         $filePath = $_FILES['arquivo-csv']['tmp_name'];
-        $dados = CSV::lerArquivo($filePath, true, ';');
-        $linhas = '';
+        $datalist = CSV::lerArquivo($filePath, true, ';');
+        $itens = '';
 
-        foreach($dados as $linha){
-            $linhas .= View::render('cadastros/ba/dados-csv-item', [
-                'ba'            => $linha['BA'],
-                'backbone'      => $linha['BACKBONE'],
-                'estacao'       => $linha['ESTACAO'],
-                'central'       => $linha['CENTRAL'],
-                'ga'            => $linha['GA']
+        $_SESSION['ba']['dados-csv'] = $datalist;
+      
+        foreach($datalist as $row){
+            $itens .= View::render('cadastros/ba/dados-csv-item', [
+                'ba'            => $row['BA'],
+                'backbone'      => $row['BACKBONE'],
+                'estacao'       => $row['ESTACAO'],
+                'central'       => $row['CENTRAL'],
+                'ga'            => $row['GA']
             ]);
         }
         
         $content = View::render('cadastros/ba/dados-csv', [
-            'itens' => $linhas
+            'itens' => $itens
         ]);
 
         return $content;
+    }
+
+    public static function getItemFromCsv($id){
+        $dadosFromSession = $_SESSION['ba']['dados-csv'];
+
+        $result = $dadosFromSession[$id];
+        $resultAsJson = json_encode($result);
+
+        return $resultAsJson;
     }
 }
