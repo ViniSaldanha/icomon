@@ -21,6 +21,16 @@ $obRouter->get('/cadastros/ba/new',[
     }
 ]);
 
+$obRouter->post('/cadastros/ba/new',[
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request){
+        return new Response(200,Cadastros\Ba::setBA($request));
+    }
+]);
+
+
 $obRouter->post('/cadastros/ba/renderTableFromFile', [
     'middlewares' => [
         'required-admin-login'

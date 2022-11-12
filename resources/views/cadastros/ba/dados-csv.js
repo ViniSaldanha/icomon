@@ -31,4 +31,5 @@ function setValues(json){
     document.getElementById('baixa').value = json.BAIXA;
     document.getElementById('sla').value = json.SLA;
     document.getElementById('cod_atividade').value = json.COD_ATIVIDADE;
+    document.getElementById('ga').value = json.GA;
 }
