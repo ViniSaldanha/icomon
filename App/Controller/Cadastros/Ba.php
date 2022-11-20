@@ -6,18 +6,21 @@ use \App\Model\Entity\Cadastro;
 use \App\Controller\Page;
 use \App\Utils\View;
 use \App\Utils\CSV;
+use \WilliamCosta\DatabaseManager\Pagination;
 
 class Ba extends Page{
     const SCRIPT_SRC = "/resources/views/cadastros/ba/dados-csv.js";
     
+
     public static function getBAs($request){
-        $content = View::render('cadastros/ba/index', [
-            'itens' => '',
-            'pagination' => '',
+        $content = View::render('cadastros/ba/index',[
+            'itens' => self::getBaItems($request,$obPagination),
+            'pagination' => parent::getPagination($request,$obPagination),
             'status' => ''
+            
         ]);
 
-        return parent::getPage('Cadastro de BA', $content, 'cadastro-ba');
+        return parent::getPage('Ba > Icomon', $content, 'ba');
     }
 
     public static function getBA($request){
@@ -134,7 +137,7 @@ class Ba extends Page{
 
         
 
-        $request->getRouter()->redirect('/');
+        $request->getRouter()->redirect('/cadastros/ba');
     }
 
     public static function renderTableFromFile(){
@@ -172,5 +175,27 @@ class Ba extends Page{
         $resultAsJson = json_encode($result);
 
         return $resultAsJson;
+    }
+
+    private static function getBaItems($request,&$obPagination){
+        $itens = '';
+
+        $quantidadetotal = Cadastro::getBAs(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
+
+        $queryParams = $request->getQueryParams();
+        $paginaAtual = $queryParams['page'] ?? 1;
+        $obPagination = new Pagination($quantidadetotal, $paginaAtual, 7);
+        $results = Cadastro::getBAs(null, 'ba DESC',$obPagination->getLimit());
+
+        while($obUser = $results->fetchObject(Cadastro::class)){
+            $itens .= View::render('cadastros/ba/item', [
+                'ba'        => $obUser->ba,
+                'backbone'  => $obUser->backbone,
+                'ga'        => $obUser->ga,   
+                'baixa'     => $obUser->baixa       
+            ]);
+        }
+        return $itens;
+    
     }
 }

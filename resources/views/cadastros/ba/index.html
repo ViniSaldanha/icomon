@@ -1,5 +1,5 @@
 <div class="container my-3">
-    <h3>Cadastro de BA</h3>
+    <h3>Boletim de Atendimento</h3>
 
     <hr>
     
@@ -10,13 +10,14 @@
     <hr>
     
     {{status}}
-    
-    <table class="table table-light table-striped table-sm">
+    <div class="w-auto" style="height:250px; font-size:0.755em; cursor:pointer;">
+    <table class="table table-hover table-striped table-sm">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>BA</th>
-                <th>Backbone</th>
+                <th>BACKBONE</th>
+                <th>GA</th>
+                <th>baixa</th>
                 <th style="width:200px;">Acões</th>
             </tr>
         </thead>
@@ -24,6 +25,6 @@
             {{itens}}
         </tbody>
     </table>
-    
+    </div>
     {{pagination}}
 </div>

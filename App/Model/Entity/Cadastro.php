@@ -111,4 +111,8 @@ class Cadastro{
         return true;
     }
 
+    public static function getBAs($where = null, $order = null, $limit = null, $field = '*'){
+        return (new Database('cadastro'))->select($where,$order,$limit,$field);
+    }
+
 }
