@@ -30,6 +30,44 @@ $obRouter->post('/cadastros/ba/new',[
     }
 ]);
 
+$obRouter->get('/cadastros/ba/{ba}/edit',[
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request,$ba){
+        return new Response(200,Cadastros\Ba::getEditBa($request,$ba));
+    }
+]);
+
+$obRouter->post('/cadastros/ba/{ba}/edit',[
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request,$ba){
+        return new Response(200,Cadastros\Ba::setEditBa($request,$ba));
+    }
+]);
+
+$obRouter->get('/cadastros/ba/{ba}/delete',[
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request,$ba){
+        return new Response(200,Cadastros\Ba::getDeleteBa($request,$ba));
+    }
+]);
+
+$obRouter->post('/cadastros/ba/{ba}/delete',[
+    'middlewares' => [
+        'required-admin-login'
+    ],
+    function($request,$ba){
+        return new Response(200,Cadastros\Ba::setDeleteBa($request,$ba));
+    }
+]);
+
+
+
 
 $obRouter->post('/cadastros/ba/renderTableFromFile', [
     'middlewares' => [
