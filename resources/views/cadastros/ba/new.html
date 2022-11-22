@@ -125,13 +125,13 @@
                             <label for="entre_local" class="form-label">Entre localidades:</label>
                             <select class="form-select form-select-sm" name="entre_local" id="entre_local" aria-label=".form-select-sm example" required>
                                 <option></option>
-                                <option value="AAIIT003">AAII- X SWQ-LA</option>
-                                <option value="AATT001">AAT-SS X SNI-CG</option>
-                                <option value="ADPT218">ADP-AB X ADP-BP</option>
-                                <option value="ADUT003">ADU-AG X TJS-MO</option>
-                                <option value="AEEPKC004">AEE-PK</option>
-                                <option value="AGFAAPC001">AGFA-AP</option>
-                                <option value="ALEAT005">ALEA-PZ X PNG-AE</option>
+                                <option value="AAII- X SWQ-LA">AAII- X SWQ-LA</option>
+                                <option value="AAT-SS X SNI-CG">AAT-SS X SNI-CG</option>
+                                <option value="ADP-AB X ADP-BP">ADP-AB X ADP-BP</option>
+                                <option value="ADU-AG X TJS-MO">ADU-AG X TJS-MO</option>
+                                <option value="AEE-PK">AEE-PK</option>
+                                <option value="AGFA-AP">AGFA-AP</option>
+                                <option value="ALEA-PZ X PNG-AE">ALEA-PZ X PNG-AE</option>
 
                             </select>
                             <div class="invalid-feedback">
@@ -154,18 +154,39 @@
                             </div>
                         </div>
                         <div class="col-md-2">
+                            <label for="tipo_utilizacao" class="form-label">Tipo utilização:</label>
+                            <select class="form-select form-select-sm" name="tipo_utilizacao" id="tipo_utilizacao" aria-label=".form-select-sm example" required>
+                                <option selected=""></option>
+                                <option value="Aereo"  >Aereo</option>
+                                <option value="Diretamente Enterrado"  >Diretamente Enterrado</option>
+                                <option value="Canalizado"  >Canalizado</option>
+                                <option value="Submarino"  >Submarino</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <label for="rede_metalica" class="form-label">Rede metálica?</label>
+                            <select class="form-select form-select-sm" name="rede_metalica" id="rede_metalica" aria-label=".form-select-sm example" required>
+                                <option selected=""></option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>                         
+                            </select>
+                        </div>
+                        <div class="col-md-2">
                             <label for="causa_rompimento" class="form-label">Causa rompimento:</label>
                             <select class="form-select form-select-sm" name="causa_rompimento" id="causa_rompimento" aria-label=".form-select-sm example" required>
                                 <option selected=""></option>
-                                <option value="acaoTerceiros">Acao de terceiros</option>
-                                <option value="ataqueDe">Ataque de roedores/insetos</option>
-                                <option value="atenuacao">Atenuação</option>
-                                <option value="caboQueimado">Cabo queimado</option>
-                                <option value="cargaAlta">Carga alta/cabo baixo</option>
-                                <option value="causaComun">Causa comun</option>
-                                <option value="chuvasTemp">Chuvas/Tempestades</option>
-                                <option value="semAtuacao">Sem atuação</option>
-                                <option value="vandalismo">Vandalismo</option>
+                                <option value="Acao de terceiros">Acao de terceiros</option>
+                                <option value="Ataque de roedores/insetos">Ataque de roedores/insetos</option>
+                                <option value="Atenuação">Atenuação</option>
+                                <option value="Cabo queimado">Cabo queimado</option>
+                                <option value="Carga alta/cabo baixo">Carga alta/cabo baixo</option>
+                                <option value="Causa comun">Causa comun</option>
+                                <option value="Chuvas/Tempestades">Chuvas/Tempestades</option>
+                                <option value="Sem atuação">Sem atuação</option>
+                                <option value="Vandalismo">Vandalismo</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
@@ -175,17 +196,33 @@
                             <label for="sub_causa" class="form-label">Sub causa:</label>
                             <select class="form-select form-select-sm" name="sub_causa" id="sub_causa" aria-label=".form-select-sm example" required>
                                 <option selected=""></option>
-                                <option value="desligamentoEnergia">Desligamento Cia de Energia</option>
-                                <option value="podaVegetacao">Poda de Vegetacao</option>
-                                <option value="obrasMun">Obras municipais</option>
-                                <option value="obrasPar">Obras particulares</option>
-                                <option value="acidenteAuto">Acidente automobilistico</option>
-                                <option value="erosao">Erosao</option>
-                                <option value="quedaArv">Queda de Arvore</option>
-                                <option value="descarga">Descarga Atmosferica</option>
-                                <option value="furtoVand">Furto/Vandalismo</option>
-                                <option value="ataqueInse">Ataque de insetos</option>
-                                <option value="ataqueRoe">Ataque de Roedores</option>
+                                <option value="Desligamento Cia de Energia">Desligamento Cia de Energia</option>
+                                <option value="Poda de Vegetacao">Poda de Vegetacao</option>
+                                <option value="Obras municipais">Obras municipais</option>
+                                <option value="Obras particulares">Obras particulares</option>
+                                <option value="Acidente automobilistico">Acidente automobilistico</option>
+                                <option value="Erosao">Erosao</option>
+                                <option value="Queda de Arvore">Queda de Arvore</option>
+                                <option value="Descarga Atmosferica">Descarga Atmosferica</option>
+                                <option value="Furto/Vandalismo">Furto/Vandalismo</option>
+                                <option value="Ataque de insetos">Ataque de insetos</option>
+                                <option value="Ataque de Roedores">Ataque de Roedores</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="desdobramento" class="form-label">Desdobramento Sub-causa:</label>
+                            <select class="form-select form-select-sm" name="desdobramento" id="desdobramento" aria-label=".form-select-sm example" required>
+                                <option selected=""></option>
+                                <option value="COPEL" >Copel</option>
+                                <option value="SANEPAR" >Sanepar</option>
+                                <option value="RODONORTE" >Rodonorte</option>
+                                <option value="ARTERIS" >Arteris</option>
+                                <option value="CCR" >Ccr</option>
+                                <option value="PREFEITURA" >Prefeitura</option>
+                                <option value="ESCAVACAO PARTICULAR" >Escavação particular</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
@@ -221,14 +258,14 @@
                                 Num jm code required.
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <label for="data_abertura" class="form-label">Data abertura janela:</label>
                             <input type="date" class="form-control form-control-sm" name="data_abertura" id="data_abertura" placeholder="" required>
                             <div class="invalid-feedback">
                                 Data abertura janela code required.
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <label for="prev_regularizacao" class="form-label">Prev regularização:</label>
                             <input type="date" class="form-control form-control-sm" name="prev_regularizacao" id="prev_regularizacao" placeholder="" required>
                             <div class="invalid-feedback"> Prev regularização code required.</div>
@@ -244,9 +281,9 @@
                             <label for="resp_pendencia" class="form-label">Resp pendencia 35d:</label>
                             <select class="form-select form-select-sm" name="resp_pendencia" id="resp_pendencia" aria-label=".form-select-sm example" required>
                                 <option selected=""></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="One">One</option>
+                                <option value="Two">Two</option>
+                                <option value="Three">Three</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
@@ -306,16 +343,16 @@
                             <label for="cod_sap_cabo" class="form-label">Codigo sap cabo:</label>
                             <select class="form-select form-select-sm" name="cod_sap_cabo" id="cod_sap_cabo" aria-label=".form-select-sm example" >
                                 <option selected=""></option>
-                                <option value="caboOpt1">300113 // CABO OPTICO CFOA-SM-AS-120-G-36</option>
-                                <option value="caboOpt2">300533 // CABO OPTICO CFOA-SM-AS-200-G-12</option>
-                                <option value="caboOpt3">300534 // CABO OPTICO CFOA SM-AS-200-G-06</option>
-                                <option value="caboOpt4">300535 // CABO OPTICO CFOA-SM-DD-G-36</option>
-                                <option value="caboOpt5">300536 // CABO OPTICO CFOA-SM-DD-G-24</option>
-                                <option value="caboOpt6">300537 // CABO OPTICO CFOA-SM-DD-S-06</option>
-                                <option value="caboOpt7">300538 // CABO OPTICO CFOA-SM-DD-S-12</option>
-                                <option value="caboOpt8">300539 // CABO OPTICO CFOA-SM-DD-G-18</option>
-                                <option value="caboOpt9">300544 // CABO FIBRA OPT CFOA-SM-DPE-G-36 FB</option>
-                                <option value="caboOpt10">300546 // CABO OPTICO CFOA-SM-DD-G-48</option>
+                                <option value="300113 // CABO OPTICO CFOA-SM-AS-120-G-36">300113 // CABO OPTICO CFOA-SM-AS-120-G-36</option>
+                                <option value="300533 // CABO OPTICO CFOA-SM-AS-200-G-12">300533 // CABO OPTICO CFOA-SM-AS-200-G-12</option>
+                                <option value="300534 // CABO OPTICO CFOA SM-AS-200-G-06">300534 // CABO OPTICO CFOA SM-AS-200-G-06</option>
+                                <option value="300535 // CABO OPTICO CFOA-SM-DD-G-36">300535 // CABO OPTICO CFOA-SM-DD-G-36</option>
+                                <option value="300536 // CABO OPTICO CFOA-SM-DD-G-24">300536 // CABO OPTICO CFOA-SM-DD-G-24</option>
+                                <option value="300537 // CABO OPTICO CFOA-SM-DD-S-06">300537 // CABO OPTICO CFOA-SM-DD-S-06</option>
+                                <option value="300538 // CABO OPTICO CFOA-SM-DD-S-12">300538 // CABO OPTICO CFOA-SM-DD-S-12</option>
+                                <option value="300539 // CABO OPTICO CFOA-SM-DD-G-18">300539 // CABO OPTICO CFOA-SM-DD-G-18</option>
+                                <option value="300544 // CABO FIBRA OPT CFOA-SM-DPE-G-36 FB">300544 // CABO FIBRA OPT CFOA-SM-DPE-G-36 FB</option>
+                                <option value="300546 // CABO OPTICO CFOA-SM-DD-G-48">300546 // CABO OPTICO CFOA-SM-DD-G-48</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
@@ -354,9 +391,10 @@
                             <label for="supervisor" class="form-label">Supervisor:</label>
                             <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="supervisor" id="supervisor" >
                                 <option selected=""></option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="Everton">Everton</option>
+                                <option value="Celestino">Celestino</option>
+                                <option value="opcao3">opcao3</option>
+                                <option value="opcao4   ">opcao4</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
