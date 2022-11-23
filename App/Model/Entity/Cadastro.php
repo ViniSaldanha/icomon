@@ -58,7 +58,7 @@ class Cadastro{
 
 
     public function cadastrar(){
-        $this->id = (new Database('cadastro'))-> insert([
+        $this->id = (new Database('boletim_analise'))-> insert([
             'ba'                    => $this->ba,
             'backbone'              => $this->backbone,
             'mes'                   => $this->mes,
@@ -118,7 +118,7 @@ class Cadastro{
     }
 
     public function atualizar(){
-        return (new Database('cadastro'))-> update('ba = ' .$this->ba,[
+        return (new Database('boletim_analise'))-> update('ba = ' .$this->ba,[
             'ba'                    => $this->ba,
             'backbone'              => $this->backbone,
             'mes'                   => $this->mes,
@@ -174,16 +174,14 @@ class Cadastro{
         ]);
     }
 
-    public function excluir(){
-        return (new Database('cadastro'))-> delete('ba = ' .$this->ba,);
-    }
+    
 
     public static function getBaByBa($ba){
         return self::getBAs('ba = '.$ba)->fetchObject(self::class);
     }
 
     public static function getBAs($where = null, $order = null, $limit = null, $field = '*'){
-        return (new Database('cadastro'))->select($where,$order,$limit,$field);
+        return (new Database('boletim_analise'))->select($where,$order,$limit,$field);
     }
 
 }

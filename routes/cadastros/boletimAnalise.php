@@ -3,7 +3,7 @@
 use \App\Http\Response;
 use \App\Controller\Cadastros;
 
-$obRouter->get('/cadastros/ba',[
+$obRouter->get('/cadastros/boletimAnalise',[
     'middlewares' => [
         'required-admin-login'
     ],
@@ -12,7 +12,7 @@ $obRouter->get('/cadastros/ba',[
     }
 ]);
 
-$obRouter->get('/cadastros/ba/new',[
+$obRouter->get('/cadastros/boletimAnalise/new',[
     'middlewares' => [
         'required-admin-login'
     ],
@@ -21,7 +21,7 @@ $obRouter->get('/cadastros/ba/new',[
     }
 ]);
 
-$obRouter->post('/cadastros/ba/new',[
+$obRouter->post('/cadastros/boletimAnalise/new',[
     'middlewares' => [
         'required-admin-login'
     ],
@@ -30,7 +30,7 @@ $obRouter->post('/cadastros/ba/new',[
     }
 ]);
 
-$obRouter->get('/cadastros/ba/{ba}/edit',[
+$obRouter->get('/cadastros/boletimAnalise/{ba}/edit',[
     'middlewares' => [
         'required-admin-login'
     ],
@@ -39,7 +39,7 @@ $obRouter->get('/cadastros/ba/{ba}/edit',[
     }
 ]);
 
-$obRouter->post('/cadastros/ba/{ba}/edit',[
+$obRouter->post('/cadastros/boletimAnalise/{ba}/edit',[
     'middlewares' => [
         'required-admin-login'
     ],
@@ -48,28 +48,19 @@ $obRouter->post('/cadastros/ba/{ba}/edit',[
     }
 ]);
 
-$obRouter->get('/cadastros/ba/{ba}/delete',[
-    'middlewares' => [
-        'required-admin-login'
-    ],
-    function($request,$ba){
-        return new Response(200,Cadastros\Ba::getDeleteBa($request,$ba));
-    }
-]);
 
-$obRouter->post('/cadastros/ba/{ba}/delete',[
+$obRouter->get('/cadastros/boletimAnalise/{ba}/gerar_pdf',[
     'middlewares' => [
         'required-admin-login'
     ],
     function($request,$ba){
-        return new Response(200,Cadastros\Ba::setDeleteBa($request,$ba));
+        return new Response(200,Cadastros\Ba::getImprimirBa($request,$ba));
     }
 ]);
 
 
 
-
-$obRouter->post('/cadastros/ba/renderTableFromFile', [
+$obRouter->post('/cadastros/boletimAnalise/renderTableFromFile', [
     'middlewares' => [
         'required-admin-login'
     ],
@@ -78,7 +69,7 @@ $obRouter->post('/cadastros/ba/renderTableFromFile', [
     }
 ]);
 
-$obRouter->get('/cadastros/ba/getItemFromCsv/{id}', [
+$obRouter->get('/cadastros/boletimAnalise/getItemFromCsv/{id}', [
     'middlewares' => [
         'required-admin-login'
     ],

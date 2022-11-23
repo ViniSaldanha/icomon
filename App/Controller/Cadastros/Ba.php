@@ -10,11 +10,11 @@ use \App\Utils\CSV;
 use \WilliamCosta\DatabaseManager\Pagination;
 
 class Ba extends Page{
-    const SCRIPT_SRC = "/resources/views/cadastros/ba/dados-csv.js";
+    const SCRIPT_SRC = "/resources/views/cadastros/boletimAnalise/dados-csv.js";
     
 
     public static function getBAs($request){
-        $content = View::render('cadastros/ba/index',[
+        $content = View::render('cadastros/boletimAnalise/index',[
             'itens' => self::getBaItems($request,$obPagination),
             'pagination' => parent::getPagination($request,$obPagination),
             'status'   => self::getStatus($request)
@@ -25,7 +25,7 @@ class Ba extends Page{
     }
 
     public static function getBA($request){
-        $content = View::render('cadastros/ba/new', [
+        $content = View::render('cadastros/boletimAnalise/new', [
 
         ]);
 
@@ -144,7 +144,7 @@ class Ba extends Page{
 
         
 
-        $request->getRouter()->redirect('/cadastros/ba');
+        $request->getRouter()->redirect('/cadastros/boletimAnalise');
     }
 
     public static function renderTableFromFile(){
@@ -159,7 +159,7 @@ class Ba extends Page{
         $_SESSION['ba']['dados-csv'] = $datalist;
       
         foreach($datalist as $row){
-            $itens .= View::render('cadastros/ba/dados-csv-item', [
+            $itens .= View::render('cadastros/boletimAnalise/dados-csv-item', [
                 'ba'            => $row['BA'],
                 'backbone'      => $row['BACKBONE'],
                 'estacao'       => $row['ESTACAO'],
@@ -168,7 +168,7 @@ class Ba extends Page{
             ]);
         }
         
-        $content = View::render('cadastros/ba/dados-csv', [
+        $content = View::render('cadastros/boletimAnalise/dados-csv', [
             'itens' => $itens
         ]);
 
@@ -188,10 +188,10 @@ class Ba extends Page{
         $obUser = Cadastro::getBaByBa($ba);
 
         if(!$obUser instanceof Cadastro){
-            $request->getRouter()->redirect('/cadastros/ba');
+            $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
 
-        $content = View::render('cadastros/ba/form',[
+        $content = View::render('cadastros/boletimAnalise/form',[
             'title'                 => 'Editar BA',
             'ba'                    => $obUser->ba,
             'backbone'              => $obUser->backbone,
@@ -256,7 +256,7 @@ class Ba extends Page{
         $obUser = Cadastro::getBaByBa($ba);
 
         if(!$obUser instanceof Cadastro){
-            $request->getRouter()->redirect('/cadastros/ba');
+            $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
 
         $postVars            = $request->getPostVars();
@@ -367,34 +367,76 @@ class Ba extends Page{
 
         $obUser->atualizar();
         
-        $request->getRouter()->redirect('/cadastros/ba/' .$obUser->ba.'/edit?status=updated');
+        $request->getRouter()->redirect('/cadastros/boletimAnalise/' .$obUser->ba.'/edit?status=updated');
     }
 
-    public static function getDeleteBa($request,$ba){
+    public static function getImprimirBa($request,$ba){
         $obUser = Cadastro::getBaByBa($ba);
 
         if(!$obUser instanceof Cadastro){
-            $request->getRouter()->redirect('/cadastros/ba');
+            $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
 
-        $content = View::render('cadastros/ba/delete',[
-            'ba'  => $obUser->ba,
-            'ga' => $obUser->ga
+        $content = View::render('cadastros/boletimAnalise/gerar_pdf',[
+            'title'                 => 'Boletim de Análise',
+            'ba'                    => $obUser->ba,
+            'backbone'              => $obUser->backbone,
+            'mes'                   => $obUser->mes,
+            'estacao'               => $obUser->estacao,
+            'mnemonico'             => $obUser->mnemonico,
+            'indicador_fibra'       => $obUser->indicador_fibra,
+            'abertura'              => $obUser->abertura,
+            'promessa'              => $obUser->promessa,
+            'proximo_acionamento'   => $obUser->proximo_acionamento,
+            'baixa'                 => $obUser->baixa,
+            'sla'                   => $obUser->sla,
+            'cod_atividade'         => $obUser->cod_atividade,
+            'obsoi'                 => $obUser->obsoi,
+            'ga'                    => $obUser->ga,
+            'nomecabo'              => $obUser->nomecabo,
+            'entre_local'           => $obUser->entre_local,
+            'numero_cis'            => $obUser->numero_cis,
+            'descricao_trecho'      => $obUser->descricao_trecho,
+            'tipo_utilizacao'       => $obUser->tipo_utilizacao,
+            'rede_metalica'         => $obUser->rede_metalica,
+            'causa_rompimento'      => $obUser->causa_rompimento,
+            'sub_causa'             => $obUser->sub_causa,
+            'desdobramento'         => $obUser->desdobramento,
+            'ba_comum'              => $obUser->ba_comum,
+            'ha_pendencia35d'       => $obUser->ha_pendencia35d,
+            'necessario_jm'         => $obUser->necessario_jm,
+            'numero_jm'             => $obUser->numero_jm,
+            'data_abertura'         => $obUser->data_abertura,
+            'prev_regularizacao'    => $obUser->prev_regularizacao,
+            'informe_pendencia'     => $obUser->informe_pendencia,
+            'material_pendencia'    => $obUser->material_pendencia,
+            'resp_pendencia'        => $obUser->resp_pendencia,
+            'prazo'                 => $obUser->prazo,
+            'justificar_prazo'      => $obUser->justificar_prazo,
+            'Cirq_cli_envol'        => $obUser->Cirq_cli_envol,
+            'descricao_ocorrido'    => $obUser->descricao_ocorrido,
+            'tempo_cgr'             => $obUser->tempo_cgr,
+            'numero_bo'             => $obUser->numero_bo,
+            'nao_abertura_bo'       => $obUser->nao_abertura_bo,
+            'remanejo_fibra'        => $obUser->remanejo_fibra,
+            'usou_cabo'             => $obUser->usou_cabo,
+            'lote_cabo'             => $obUser->lote_cabo,
+            'metro_cabo'            => $obUser->metro_cabo,
+            'cod_sap_cabo'          => $obUser->cod_sap_cabo,
+            'coordenadas_cabo'      => $obUser->coordenadas_cabo,
+            'quantidade_cx'         => $obUser->quantidade_cx,
+            'numero_emenda'         => $obUser->numero_emenda,
+            'coordenadas_enpe'      => $obUser->coordenadas_enpe,
+            'endereco_enpe'         => $obUser->endereco_enpe,
+            'add_croqui'            => $obUser->add_croqui,
+            'supervisor'            => $obUser->supervisor,
+
         ]);
 
-        return parent::getPage('Excluir BA > Icomon',$content,'ba');
+        return parent::getImpressao('PDF BA > Icomon', $content, 'ba');
     }
 
-    public static function setDeleteBa($request,$ba){
-        $obUser = Cadastro::getBaByBa($ba);
-
-        if(!$obUser instanceof Cadastro){
-            $request->getRouter()->redirect('/cadastros/ba');
-        }
-
-        $obUser->excluir();
-        $request->getRouter()->redirect('/cadastros/ba?status=deleted');
-    }
+    
 
 
     private static function getBaItems($request,&$obPagination){
@@ -408,7 +450,7 @@ class Ba extends Page{
         $results = Cadastro::getBAs(null, 'ba DESC',$obPagination->getLimit());
 
         while($obUser = $results->fetchObject(Cadastro::class)){
-            $itens .= View::render('cadastros/ba/item', [
+            $itens .= View::render('cadastros/boletimAnalise/item', [
                 'ba'                    => $obUser->ba,
                 'backbone'              => $obUser->backbone,
                 'mes'                   => $obUser->mes,   
@@ -476,9 +518,6 @@ class Ba extends Page{
                 break;
             case 'updated':
                 return Alert::getSuccess('BA atualizado com sucesso!');
-                break;
-            case 'deleted':
-                return Alert::getSuccess('BA apagado com sucesso!');
                 break;
             case 'duplicated':
                 return Alert::getError('O BA inserido já está em uso.');

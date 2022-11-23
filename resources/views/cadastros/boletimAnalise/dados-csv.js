@@ -1,7 +1,7 @@
 async function renderTableFromFile(){
     let formData = new FormData();
     formData.append('arquivo-csv', fileupload.files[0]); // AQUI ACESSA DIRETAMENTE O ID DO ELEMENTO
-    const response = await fetch('/cadastros/ba/renderTableFromFile', {
+    const response = await fetch('/cadastros/boletimAnalise/renderTableFromFile', {
         method: 'POST',
         body: formData
     });
@@ -11,7 +11,7 @@ async function renderTableFromFile(){
 
 async function getItemFromCsv(trClicked){
     const id = trClicked.rowIndex - 1;
-    const response = await fetch(`/cadastros/ba/getItemFromCsv/${id}`);
+    const response = await fetch(`/cadastros/boletimAnalise/getItemFromCsv/${id}`);
     const responseText = await response.text();
     const json = JSON.parse(responseText);
 
@@ -33,3 +33,5 @@ function setValues(json){
     document.getElementById('cod_atividade').value = json.COD_ATIVIDADE;
     document.getElementById('ga').value = json.GA;
 }
+
+

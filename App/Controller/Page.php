@@ -43,6 +43,15 @@ class Page {
         ]);
     }
 
+    public static function getImpressao($title, $content, $currentModule = '', $scriptSrc = ''){
+        return View::render('layout/pagepdf', [
+            'title' => $title,
+            'header' => self::getHeader(),
+            'content' => $content,
+            'script' => $scriptSrc
+        ]);
+    }
+
     public static function getLoginPage($title, $status){
         return View::render('layout/login', [
             'title' => $title,
@@ -58,7 +67,7 @@ class Page {
         ],
         'cadastro-ba' =>[
             'label' => 'Cadastro BA',
-            'link'  => URL.'/cadastros/ba',
+            'link'  => URL.'/cadastros/boletimAnalise',
             'icon'  => 'table'
         ]
     ];
