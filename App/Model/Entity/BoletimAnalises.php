@@ -3,7 +3,7 @@
 namespace App\Model\Entity;
 use \WilliamCosta\DatabaseManager\Database;
 
-class Boletim_analise{
+class BoletimAnalises{
     public $ba;
     public $backbone;
     public $mes;

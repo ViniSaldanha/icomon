@@ -5,7 +5,7 @@ namespace App\Controller\Mascara;
 use App\Controller\Alert;
 use App\Controller\Page;
 use \App\Utils\View;
-use \App\Model\Entity\Mascara_encerramento;
+use \App\Model\Entity\MascarasEncerramento;
 use \WilliamCosta\DatabaseManager\Pagination;
 
 class MascaraEncerramento extends Page{
@@ -70,7 +70,7 @@ class MascaraEncerramento extends Page{
         $foto_antes                 = $postVars['foto_antes'] ?? '';
         $foto_depois                = $postVars['foto_depois'] ?? '';
 
-        $obMask                             = new Mascara_encerramento;
+        $obMask                             = new MascarasEncerramento;
         $obMask->ba                         = $ba;
         $obMask->enpe_e_emf_repasse         = $enpe_e_emf_repasse;
         $obMask->localidade                 = $localidade;
@@ -116,8 +116,8 @@ class MascaraEncerramento extends Page{
     }
 
     public static function getEditMask($request,$ba){
-        $obMask = Mascara_encerramento::getMaskById($ba);
-        if(!$obMask instanceof Mascara_encerramento){
+        $obMask = MascarasEncerramento::getMaskById($ba);
+        if(!$obMask instanceof MascarasEncerramento){
             $request->getRouter()->redirect('/mascara/mascaraEncerramento');
         }
 
@@ -167,8 +167,8 @@ class MascaraEncerramento extends Page{
     }
 
     public static function setEditMask($request,$ba){
-        $obMask = Mascara_encerramento::getMaskById($ba);
-        if(!$obMask instanceof Mascara_encerramento){
+        $obMask = MascarasEncerramento::getMaskById($ba);
+        if(!$obMask instanceof MascarasEncerramento){
             $request->getRouter()->redirect('/mascara/mascaraEncerramento');
         }
         $postVars                   = $request->getPostVars();
@@ -254,8 +254,8 @@ class MascaraEncerramento extends Page{
     }
 
     public static function getDeleteMask($request,$ba){
-        $obMask = Mascara_encerramento::getMaskById($ba);
-        if(!$obMask instanceof Mascara_encerramento){
+        $obMask = MascarasEncerramento::getMaskById($ba);
+        if(!$obMask instanceof MascarasEncerramento){
             $request->getRouter()->redirect('/mascara/mascaraEncerramento');
         }
         $content = View::render('mascara/mascaraEncerramento/delete',[
@@ -267,9 +267,9 @@ class MascaraEncerramento extends Page{
     }
 
     public static function setDeleteMask($request,$ba){
-        $obMask = Mascara_encerramento::getMaskById($ba);
+        $obMask = MascarasEncerramento::getMaskById($ba);
 
-        if(!$obMask instanceof Mascara_encerramento){
+        if(!$obMask instanceof MascarasEncerramento){
             $request->getRouter()->redirect('/mascara/mascaraEncerramento');
         }
         $obMask->delete();
@@ -279,12 +279,12 @@ class MascaraEncerramento extends Page{
 
     private static function getMaskItems($request,&$obPagination){
         $itens = '';
-        $quantidadetotal = Mascara_encerramento::getMasks(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
+        $quantidadetotal = MascarasEncerramento::getMasks(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
         $queryParams = $request->getQueryParams();
         $paginaAtual = $queryParams['page'] ?? 1;
         $obPagination = new Pagination($quantidadetotal, $paginaAtual, 5);
-        $results = Mascara_encerramento::getMasks(null, 'ba DESC',$obPagination->getLimit());
-        while($obMask = $results->fetchObject(Mascara_encerramento::class)){
+        $results = MascarasEncerramento::getMasks(null, 'ba DESC',$obPagination->getLimit());
+        while($obMask = $results->fetchObject(MascarasEncerramento::class)){
             $itens .= View::render('mascara/mascaraEncerramento/item', [
                 'ba'                            => $obMask->ba,
                 'enpe_e_emf_repasse'            => $obMask->enpe_e_emf_repasse,

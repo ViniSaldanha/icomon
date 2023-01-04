@@ -3,8 +3,8 @@
 namespace App\Controller\Cadastros;
 
 use App\Controller\Alert;
-use \App\Model\Entity\Boletim_analise;
-use \App\Model\Entity\Mascara_encerramento;
+use \App\Model\Entity\BoletimAnalises;
+use \App\Model\Entity\MascarasEncerramento;
 use \App\Controller\Page;
 use \App\Utils\View;
 use \App\Utils\CSV;
@@ -81,7 +81,7 @@ class BoletimAnalise extends Page{
         $add_croqui          = $postVars['add_croqui'] ?? '';
         $supervisor          = $postVars['supervisor'] ?? '';
         
-        $obItens                     = new Boletim_analise; 
+        $obItens                     = new BoletimAnalises; 
         $obItens->ba                  = $ba;
         $obItens->backbone            = $backbone;
         $obItens->mes                 = $mes;
@@ -163,7 +163,7 @@ class BoletimAnalise extends Page{
     public static function getItemFromCsv($id){
         $dadosFromSession = $_SESSION['ba']['dados-csv'];
         $result = $dadosFromSession[$id];
-        $mascaraEncerramento = Mascara_encerramento::getMaskById($result['BA']);
+        $mascaraEncerramento = MascarasEncerramento::getMaskById($result['BA']);
         $r = new stdClass;
         $r->data = $result;
         $r->mascaraEncerramento = $mascaraEncerramento;
@@ -172,8 +172,8 @@ class BoletimAnalise extends Page{
     }
 
     public static function getEditBa($request,$ba){
-        $obItens = Boletim_analise::findById($ba);
-        if(!$obItens instanceof Boletim_analise){
+        $obItens = BoletimAnalises::findById($ba);
+        if(!$obItens instanceof BoletimAnalises){
             $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
         $content = View::render('cadastros/boletimAnalise/form',[
@@ -235,8 +235,8 @@ class BoletimAnalise extends Page{
     }
 
     public static function setEditBa($request,$ba){
-        $obItens = Boletim_analise::findById($ba);
-        if(!$obItens instanceof Boletim_analise){
+        $obItens = BoletimAnalises::findById($ba);
+        if(!$obItens instanceof BoletimAnalises){
             $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
         $postVars            = $request->getPostVars();
@@ -348,8 +348,8 @@ class BoletimAnalise extends Page{
     }
 
     public static function getPrintBa($request,$ba){
-        $obItens = Boletim_analise::findById($ba);
-        if(!$obItens instanceof Boletim_analise){
+        $obItens = BoletimAnalises::findById($ba);
+        if(!$obItens instanceof BoletimAnalises){
             $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
         $content = View::render('cadastros/boletimAnalise/gerar_pdf',[
@@ -411,12 +411,12 @@ class BoletimAnalise extends Page{
 
     private static function getBaItems($request,&$obPagination){
         $itens = '';
-        $quantidadetotal = Boletim_analise::getBAs(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
+        $quantidadetotal = BoletimAnalises::getBAs(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
         $queryParams = $request->getQueryParams();
         $paginaAtual = $queryParams['page'] ?? 1;
         $obPagination = new Pagination($quantidadetotal, $paginaAtual, 7);
-        $results = Boletim_analise::getBAs(null, 'ba DESC',$obPagination->getLimit());
-        while($obItens = $results->fetchObject(Boletim_analise::class)){
+        $results = BoletimAnalises::getBAs(null, 'ba DESC',$obPagination->getLimit());
+        while($obItens = $results->fetchObject(BoletimAnalises::class)){
             $itens .= View::render('cadastros/boletimAnalise/item', [
                 'ba'                    => $obItens->ba,
                 'backbone'              => $obItens->backbone,
