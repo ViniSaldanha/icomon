@@ -44,7 +44,7 @@ class MascarasEncerramento{
     public $foto_depois;
 
     public function insert(){
-        $this-> ba = (new Database('MascarasEncerramento'))-> insert([
+        $this-> ba = (new Database('Mascara_encerramento'))-> insert([
             'ba'                        => $this->ba,
             'enpe_e_emf_repasse'        => $this->enpe_e_emf_repasse,
             'localidade'                => $this->localidade,
@@ -90,7 +90,7 @@ class MascarasEncerramento{
     }
 
     public function update(){
-        return (new Database('MascarasEncerramento'))-> update('ba = ' .$this->ba,[
+        return (new Database('Mascara_encerramento'))-> update('ba = ' .$this->ba,[
             'ba'                        => $this->ba,
             'enpe_e_emf_repasse'        => $this->enpe_e_emf_repasse,
             'localidade'                => $this->localidade,
@@ -132,7 +132,7 @@ class MascarasEncerramento{
     }
 
     public function delete(){
-        return (new Database('MascarasEncerramento'))-> delete('ba = ' .$this->ba,);
+        return (new Database('Mascara_encerramento'))-> delete('ba = ' .$this->ba,);
     }
 
     public static function getMaskById($ba){
@@ -140,6 +140,6 @@ class MascarasEncerramento{
     }
 
     public static function getMasks($where = null, $order = null, $limit = null, $field = '*'){
-        return (new Database('MascarasEncerramento'))->select($where,$order,$limit,$field);
+        return (new Database('Mascara_encerramento'))->select($where,$order,$limit,$field);
     }
 }
