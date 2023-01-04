@@ -72,7 +72,7 @@ class Page {
         ],
         'mascara-encerramento' =>[
             'label' => 'Mascara de Enc',
-            'link'  => URL.'/mascara/mascaraEncerramento',
+            'link'  => URL.'/cadastros/mascaraEncerramento',
             'icon'  => 'clipboard'
         ]
     ];

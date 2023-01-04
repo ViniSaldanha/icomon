@@ -10,7 +10,7 @@ include __DIR__.'/routes/admin/users.php';
 include __DIR__.'/routes/home.php';
 include __DIR__.'/routes/login.php';
 include __DIR__.'/routes/cadastros/boletimAnalise.php';
-include __DIR__.'/routes/mascara/mascaraEncerramento.php';
+include __DIR__.'/routes/cadastros/mascaraEncerramento.php';
 
 $obRouter->run()
          ->sendResponse();
