@@ -8,7 +8,7 @@ $obRouter->get('/cadastros/boletimAnalise',[
         'required-admin-login'
     ],
     function($request){
-        return new Response(200,Cadastros\Ba::getBAs($request));
+        return new Response(200,Cadastros\BoletimAnalise::getBAs($request));
     }
 ]);
 
@@ -17,7 +17,7 @@ $obRouter->get('/cadastros/boletimAnalise/new',[
         'required-admin-login'
     ],
     function($request){
-        return new Response(200,Cadastros\Ba::getBA($request));
+        return new Response(200,Cadastros\BoletimAnalise::getBA($request));
     }
 ]);
 
@@ -26,7 +26,7 @@ $obRouter->post('/cadastros/boletimAnalise/new',[
         'required-admin-login'
     ],
     function($request){
-        return new Response(200,Cadastros\Ba::setBA($request));
+        return new Response(200,Cadastros\BoletimAnalise::setBA($request));
     }
 ]);
 
@@ -35,7 +35,7 @@ $obRouter->get('/cadastros/boletimAnalise/{ba}/edit',[
         'required-admin-login'
     ],
     function($request,$ba){
-        return new Response(200,Cadastros\Ba::getEditBa($request,$ba));
+        return new Response(200,Cadastros\BoletimAnalise::getEditBa($request,$ba));
     }
 ]);
 
@@ -44,7 +44,7 @@ $obRouter->post('/cadastros/boletimAnalise/{ba}/edit',[
         'required-admin-login'
     ],
     function($request,$ba){
-        return new Response(200,Cadastros\Ba::setEditBa($request,$ba));
+        return new Response(200,Cadastros\BoletimAnalise::setEditBa($request,$ba));
     }
 ]);
 
@@ -54,7 +54,7 @@ $obRouter->get('/cadastros/boletimAnalise/{ba}/gerar_pdf',[
         'required-admin-login'
     ],
     function($request,$ba){
-        return new Response(200,Cadastros\Ba::getImprimirBa($request,$ba));
+        return new Response(200,Cadastros\BoletimAnalise::getPrintBa($request,$ba));
     }
 ]);
 
@@ -65,7 +65,7 @@ $obRouter->post('/cadastros/boletimAnalise/renderTableFromFile', [
         'required-admin-login'
     ],
     function($request){
-        return new Response(200,Cadastros\Ba::renderTableFromFile());
+        return new Response(200,Cadastros\BoletimAnalise::renderTableFromFile());
     }
 ]);
 
@@ -74,6 +74,6 @@ $obRouter->get('/cadastros/boletimAnalise/getItemFromCsv/{id}', [
         'required-admin-login'
     ],
     function($request, $id){
-        return new Response(200,Cadastros\Ba::getItemFromCsv($id));
+        return new Response(200,Cadastros\BoletimAnalise::getItemFromCsv($id));
     }
 ]);

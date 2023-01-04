@@ -174,6 +174,13 @@
                                 <option value="Não">Não</option>                         
                             </select>
                         </div>
+                        <div class="col-md-1">
+                            <label for="numero_cis" class="form-label">MA:</label>
+                            <input type="text" class="form-control form-control-sm" name="numero_cis" id="numero_cis" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
                         <div class="col-md-2">
                             <label for="causa_rompimento" class="form-label">Causa rompimento:</label>
                             <select class="form-select form-select-sm" name="causa_rompimento" id="causa_rompimento" aria-label=".form-select-sm example" required>
@@ -236,80 +243,82 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="ha_pendencia35d" class="form-label">Há pendencia 35d?:</label>
-                            <select class="form-select form-select-sm" name="ha_pendencia35d" id="ha_pendencia35d" aria-label=".form-select-sm example" required>
-                                <option selected=""></option>
-                                <option value="Sim">Sim</option>
-                                <option value="Não">Não</option>                         
-                            </select>
-                        </div>
-                        <div class="col-2">
                             <label for="necessario_jm" class="form-label">Necessario JM?:</label>
-                            <select class="form-select form-select-sm" name="necessario_jm" id="necessario_jm" aria-label=".form-select-sm example" required>
+                            <select class="form-select form-select-sm" name="necessario_jm" onchange='exibir_jm(this)' id="necessario_jm" aria-label=".form-select-sm example" required>
                                 <option selected=""></option>
                                 <option value="Sim">Sim</option>
                                 <option value="Não">Não</option>                         
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label for="numero_jm" class="form-label">Num jm:</label>
-                            <input type="text" class="form-control form-control-sm" name="numero_jm" id="numero_jm" required>
+                            <label for="numero_jm" class="form-label" style="display: none ;" id="numero_jm2">Num jm:</label>
+                            <input type="text" class="form-control form-control-sm" name="numero_jm" style="display: none ;" id="numero_jm" >
                             <div class="invalid-feedback">
                                 Num jm code required.
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <label for="data_abertura" class="form-label">Data abertura janela:</label>
-                            <input type="date" class="form-control form-control-sm" name="data_abertura" id="data_abertura" placeholder="" required>
+                            <label for="data_abertura" class="form-label" style="display: none ;" id="data_abertura2">Data abertura janela:</label>
+                            <input type="date" class="form-control form-control-sm" name="data_abertura" style="display: none ;" id="data_abertura" placeholder="" >
                             <div class="invalid-feedback">
                                 Data abertura janela code required.
                             </div>
                         </div>
                         <div class="col-3">
-                            <label for="prev_regularizacao" class="form-label">Prev regularização:</label>
-                            <input type="date" class="form-control form-control-sm" name="prev_regularizacao" id="prev_regularizacao" placeholder="" required>
+                            <label for="prev_regularizacao" class="form-label" style="display: none ;" id="prev_regularizacao2">Prev regularização:</label>
+                            <input type="date" class="form-control form-control-sm" name="prev_regularizacao" style="display: none ;" id="prev_regularizacao" >
                             <div class="invalid-feedback"> Prev regularização code required.</div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                            <label class="form-label" for="informe_pendencia">Informe pendencia:</label>
-                            <textarea class="form-control form-control-sm" name="informe_pendencia" id="informe_pendencia" rows="4" required></textarea>
+                        <div class="col-2">
+                            <label class="form-label" for="prazo">Prazo:</label>
+                            <input class="form-control form-control-sm" name="prazo" id="prazo" />
+                        </div>
+                        <div class="col-2">
+                            <label for="ha_pendencia35d" class="form-label">Há pendencia 35d?:</label>
+                            <select class="form-select form-select-sm" name="ha_pendencia35d" onchange='exibir_pend(this)' id="ha_pendencia35d" aria-label=".form-select-sm example" required>
+                                <option selected=""></option>
+                                <option value="Yes">Sim</option>
+                                <option value="No">Não</option>                         
+                            </select>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label class="form-label" for="material_pendencia">Material pendencia:</label>
-                            <textarea class="form-control form-control-sm" name="material_pendencia" id="material_pendencia" rows="4" required></textarea></div>
+                            <label class="form-label" for="informe_pendencia" style="display: none ;"  id="informe_pendencia2">Informe pendencia:</label>
+                            <textarea class="form-control form-control-sm" name="informe_pendencia"  style="display: none ;"  id="informe_pendencia" rows="4" ></textarea>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label" for="material_pendencia" style="display: none ;" id="material_pendencia2">Material pendencia:</label>
+                            <textarea class="form-control form-control-sm" name="material_pendencia"  style="display: none ;" id="material_pendencia" rows="4" ></textarea></div>
                         <div class="col-md-3">
-                            <label for="resp_pendencia" class="form-label">Resp pendencia 35d:</label>
-                            <select class="form-select form-select-sm" name="resp_pendencia" id="resp_pendencia" aria-label=".form-select-sm example" required>
+                            <label for="resp_pendencia" class="form-label" style="display: none ;" id="resp_pendencia2">Resp pendencia 35d:</label>
+                            <select class="form-select form-select-sm" name="resp_pendencia"  style="display: none ;" id="resp_pendencia" aria-label=".form-select-sm example" >
                                 <option selected=""></option>
-                                <option value="One">One</option>
-                                <option value="Two">Two</option>
-                                <option value="Three">Three</option>
+                                <option value="Opcao1">Opcao1</option>
+                                <option value="Opcao2">Opcao2</option>
+                                <option value="Opcao3">Opcao3</option>
+                                <option value="Opcao4">Opcao4</option>
+                                <option value="Opcao5">Opcao5</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <label class="form-label" for="prazo">Prazo:</label>
-                            <input class="form-control form-control-sm" name="prazo" id="prazo" type="text" required />
-                        </div>
                         <div class="col-md-4 mb-3">
                             <label class="form-label" for="justificar_prazo">Justificar fora do prazo:</label>
-                            <textarea class="form-control form-control-sm" name="justificar_prazo" id="justificar_prazo" rows="4" required></textarea>
+                            <textarea class="form-control form-control-sm" name="justificar_prazo" id="justificar_prazo" rows="4" ></textarea>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label class="form-label" for="Cirq_cli_envol">Cirq. e Cli envolvidos:</label>
-                            <textarea class="form-control form-control-sm" name="Cirq_cli_envol" id="Cirq_cli_envol" rows="4" required></textarea>
+                            <label class="form-label" for="cirq_cli_envol">Cirq. e Cli envolvidos:</label>
+                            <textarea class="form-control form-control-sm" name="cirq_cli_envol" id="cirq_cli_envol" rows="4" ></textarea>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label class="form-label" for="descricao_ocorrido">Descrição do ocorrido:</label>
-                            <textarea class="form-control form-control-sm" name="descricao_ocorrido" id="descricao_ocorrido" rows="4" required></textarea>
+                            <textarea class="form-control form-control-sm" name="descricao_ocorrido" id="descricao_ocorrido" rows="4" ></textarea>
                         </div>
 
                         <hr>
                         <div class="col-md-3">
                             <label class="form-label" for="tempo_cgr">Tempo CGR/ENC:</label>
-                            <input class="form-control form-control-sm" name="tempo_cgr" id="tempo_cgr" type="text" required />
+                            <input class="form-control form-control-sm" name="tempo_cgr" id="tempo_cgr" type="text"  />
                         </div>
                         <div class="col-md-3">
                             <label class="form-label" for="numero_bo">Numero prot bo:</label>
@@ -325,23 +334,23 @@
                         </div>
                         <div class="col-2">
                             <label for="usou_cabo" class="form-label">Usou cabo?:</label>
-                            <select class="form-select form-select-sm" name="usou_cabo" id="usou_cabo" aria-label=".form-select-sm example" required>
+                            <select class="form-select form-select-sm" onchange='exibir_cabo(this)' name="usou_cabo" id="usou_cabo" aria-label=".form-select-sm example" required>
                                 <option selected=""></option>
                                 <option value="Sim">Sim</option>
                                 <option value="Não">Não</option>                         
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label" for="lote_cabo">Lote cabo:</label>
-                            <input class="form-control form-control-sm" name="lote_cabo" id="lote_cabo" type="text"/>
+                            <label class="form-label" for="lote_cabo" style="display: none ;"  id="lote_cabo2">Lote cabo:</label>
+                            <input class="form-control form-control-sm" name="lote_cabo" style="display: none ;"  id="lote_cabo" type="text"/>
                         </div>
                         <div class="col-md-2">
-                            <label class="form-label" for="metro_cabo">Metro cabo utilizado:</label>
-                            <input class="form-control form-control-sm" name="metro_cabo" id="metro_cabo" type="text"/>
+                            <label class="form-label" for="metro_cabo" style="display: none ;" id="metro_cabo2">Metro cabo utilizado:</label>
+                            <input class="form-control form-control-sm" name="metro_cabo" style="display: none ;" id="metro_cabo" type="text"/>
                         </div>
                         <div class="col-md-2">
-                            <label for="cod_sap_cabo" class="form-label">Codigo sap cabo:</label>
-                            <select class="form-select form-select-sm" name="cod_sap_cabo" id="cod_sap_cabo" aria-label=".form-select-sm example" >
+                            <label for="cod_sap_cabo" class="form-label" style="display: none ;" id="cod_sap_cabo2">Codigo sap cabo:</label>
+                            <select class="form-select form-select-sm" name="cod_sap_cabo" style="display: none ;" id="cod_sap_cabo" aria-label=".form-select-sm example" >
                                 <option selected=""></option>
                                 <option value="300113 // CABO OPTICO CFOA-SM-AS-120-G-36">300113 // CABO OPTICO CFOA-SM-AS-120-G-36</option>
                                 <option value="300533 // CABO OPTICO CFOA-SM-AS-200-G-12">300533 // CABO OPTICO CFOA-SM-AS-200-G-12</option>
@@ -359,25 +368,23 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label" for="coordenadas_cabo">Coordenadas
-                                cabo:</label>
-                                <input class="form-control form-control-sm" name="coordenadas_cabo" id="coordenadas_cabo" type="text" />
-                            </div>
-
-                        <div class="col-md-3">
-                            <label class="form-label" for="quantidade_cx">Quantidade caixa usada:</label>
-                            <input class="form-control form-control-sm" name="quantidade_cx" id="quantidade_cx" type="text" />
+                            <label class="form-label" for="coordenadas_cabo" style="display: none ;" id="coordenadas_cabo2">Coordenadas cabo:</label>
+                            <input class="form-control form-control-sm" name="coordenadas_cabo" style="display: none ;" id="coordenadas_cabo" type="text" />
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label" for="numero_emenda">Numero emenda ENPE:</label>
-                            <input class="form-control form-control-sm" name="numero_emenda" id="numero_emenda" type="text" />
+                            <label class="form-label" for="quantidade_cx" style="display: none ;" id="quantidade_cx2">Quantidade caixa usada:</label>
+                            <input class="form-control form-control-sm" name="quantidade_cx" style="display: none ;" id="quantidade_cx" type="text" />
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label" for="coordenadas_enpe">Coordenadas ENPE:</label>
-                            <input class="form-control form-control-sm" name="coordenadas_enpe" id="coordenadas_enpe" type="text" />
+                            <label class="form-label" for="numero_emenda" style="display: none ;" id="numero_emenda2">Numero emenda ENPE:</label>
+                            <input class="form-control form-control-sm" name="numero_emenda" style="display: none ;" id="numero_emenda" type="text" />
                         </div>
-                        <div class="col-md-3"><label class="form-label" for="endereco_enpe">Endereço ENPE/CABO:</label>
-                            <input class="form-control form-control-sm" name="endereco_enpe" id="endereco_enpe" type="text" />
+                        <div class="col-md-3">
+                            <label class="form-label" for="coordenadas_enpe" style="display: none ;" id="coordenadas_enpe2">Coordenadas ENPE:</label>
+                            <input class="form-control form-control-sm" name="coordenadas_enpe" style="display: none ;" id="coordenadas_enpe" type="text" />
+                        </div>
+                        <div class="col-md-3"><label class="form-label" for="endereco_enpe" style="display: none ;" id="endereco_enpe2">Endereço ENPE/CABO:</label>
+                            <input class="form-control form-control-sm" name="endereco_enpe" style="display: none ;" id="endereco_enpe" type="text" />
                         </div>
 
                         <div class="mb-3">
@@ -391,10 +398,12 @@
                             <label for="supervisor" class="form-label">Supervisor:</label>
                             <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="supervisor" id="supervisor" >
                                 <option selected=""></option>
-                                <option value="Everton">Everton</option>
-                                <option value="Celestino">Celestino</option>
-                                <option value="opcao3">opcao3</option>
-                                <option value="opcao4   ">opcao4</option>
+                                <option value="Aldino">Aldino</option>
+                                <option value="Adriano">Adriano</option>
+                                <option value="Filipe">Filipe</option>
+                                <option value="Jose Antonio">Jose Antonio</option>
+                                <option value="Paulo">Paulo</option>
+                                <option value="Wagner">Wagner</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
@@ -410,3 +419,5 @@
         </div>
 
     </div>
+
+    
