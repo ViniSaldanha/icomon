@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Mascara;
+namespace App\Controller\Cadastros;
 
 use App\Controller\Alert;
 use App\Controller\Page;
@@ -9,9 +9,9 @@ use \App\Model\Entity\MascarasEncerramento;
 use \WilliamCosta\DatabaseManager\Pagination;
 
 class MascaraEncerramento extends Page{
-    const SCRIPT_SRC = "/resources/views/mascara/mascaraEncerramento/exibir-campos.js";
+    const SCRIPT_SRC = "/resources/views/cadastros/mascaraEncerramento/exibir-campos.js";
     public static function getMask($request){
-        $content = View::render('mascara/mascaraEncerramento/index',[
+        $content = View::render('cadastros/mascaraEncerramento/index',[
             'itens' => self::getMaskItems($request,$obPagination),
             'pagination' => parent::getPagination($request,$obPagination),
             'status'    => self::getStatus($request)
@@ -21,7 +21,7 @@ class MascaraEncerramento extends Page{
     }
 
     public static function getNewMask($request){
-        $content = View::render('mascara/mascaraEncerramento/new',[
+        $content = View::render('cadastros/mascaraEncerramento/new',[
             'title'     => 'Registrar máscara de encerramento',
             'status'    => self::getStatus($request)
         ]);
@@ -112,16 +112,16 @@ class MascaraEncerramento extends Page{
         $obMask->insert();
 
         //$request->getRouter()->redirect('/mascara/mascaraEncerramento/' .$obMask->id.'/edit?status=created');
-        $request->getRouter()->redirect('/mascara/mascaraEncerramento?status=created');
+        $request->getRouter()->redirect('/cadastros/mascaraEncerramento?status=created');
     }
 
     public static function getEditMask($request,$ba){
         $obMask = MascarasEncerramento::getMaskById($ba);
         if(!$obMask instanceof MascarasEncerramento){
-            $request->getRouter()->redirect('/mascara/mascaraEncerramento');
+            $request->getRouter()->redirect('/cadastros/mascaraEncerramento');
         }
 
-        $content = View::render('mascara/mascaraEncerramento/form',[
+        $content = View::render('cadastros/mascaraEncerramento/form',[
             'title'                         => 'Editar Máscara de encerramento',
             'ba'                            => $obMask->ba,
             'enpe_e_emf_repasse'            => $obMask->enpe_e_emf_repasse,
@@ -169,7 +169,7 @@ class MascaraEncerramento extends Page{
     public static function setEditMask($request,$ba){
         $obMask = MascarasEncerramento::getMaskById($ba);
         if(!$obMask instanceof MascarasEncerramento){
-            $request->getRouter()->redirect('/mascara/mascaraEncerramento');
+            $request->getRouter()->redirect('/cadastros/mascaraEncerramento');
         }
         $postVars                   = $request->getPostVars();
         $ba                         = $postVars['ba'] ?? '';
@@ -250,15 +250,15 @@ class MascaraEncerramento extends Page{
         $obMask->foto_antes                 = $foto_antes;
         $obMask->foto_depois                = $foto_depois;
         $obMask->update();       
-        $request->getRouter()->redirect('/mascara/mascaraEncerramento/' .$obMask->ba.'/edit?status=updated');
+        $request->getRouter()->redirect('/cadastros/mascaraEncerramento/' .$obMask->ba.'/edit?status=updated');
     }
 
     public static function getDeleteMask($request,$ba){
         $obMask = MascarasEncerramento::getMaskById($ba);
         if(!$obMask instanceof MascarasEncerramento){
-            $request->getRouter()->redirect('/mascara/mascaraEncerramento');
+            $request->getRouter()->redirect('/cadastros/mascaraEncerramento');
         }
-        $content = View::render('mascara/mascaraEncerramento/delete',[
+        $content = View::render('cadastros/mascaraEncerramento/delete',[
             'ba'  => $obMask->ba,
 
         ]);
@@ -270,10 +270,10 @@ class MascaraEncerramento extends Page{
         $obMask = MascarasEncerramento::getMaskById($ba);
 
         if(!$obMask instanceof MascarasEncerramento){
-            $request->getRouter()->redirect('/mascara/mascaraEncerramento');
+            $request->getRouter()->redirect('/cadastros/mascaraEncerramento');
         }
         $obMask->delete();
-        $request->getRouter()->redirect('/mascara/mascaraEncerramento?status=deleted');
+        $request->getRouter()->redirect('/cadastros/mascaraEncerramento?status=deleted');
     }
 
 
@@ -285,7 +285,7 @@ class MascaraEncerramento extends Page{
         $obPagination = new Pagination($quantidadetotal, $paginaAtual, 5);
         $results = MascarasEncerramento::getMasks(null, 'ba DESC',$obPagination->getLimit());
         while($obMask = $results->fetchObject(MascarasEncerramento::class)){
-            $itens .= View::render('mascara/mascaraEncerramento/item', [
+            $itens .= View::render('cadastros/mascaraEncerramento/item', [
                 'ba'                            => $obMask->ba,
                 'enpe_e_emf_repasse'            => $obMask->enpe_e_emf_repasse,
                 'localidade'                    => $obMask->localidade,
