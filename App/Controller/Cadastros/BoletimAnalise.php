@@ -2,7 +2,7 @@
 
 namespace App\Controller\Cadastros;
 
-use App\Controller\Alert;
+use \App\Controller\Alert;
 use \App\Model\Entity\BoletimAnalises;
 use \App\Model\Entity\MascarasEncerramento;
 use \App\Controller\Page;
@@ -10,23 +10,29 @@ use \App\Utils\View;
 use \App\Utils\CSV;
 use stdClass;
 use \WilliamCosta\DatabaseManager\Pagination;
+use \App\Controller\Components\Options;
 
 class BoletimAnalise extends Page{
     const SCRIPT_SRC = "/resources/views/cadastros/boletimAnalise/dados-csv.js";
+    
     public static function getBAs($request){
         $content = View::render('cadastros/boletimAnalise/index',[
             'itens' => self::getBaItems($request,$obPagination),
             'pagination' => parent::getPagination($request,$obPagination),
             'status'   => self::getStatus($request) 
         ]);
+        
         return parent::getPage('Ba > Icomon', $content, 'BoletimAnalise');
     }
 
     public static function getBA($request){
         $content = View::render('cadastros/boletimAnalise/new', [
+            'opt-tipo-utilizacao' => Options::loadOptions('TP_UTILIZACAO')
         ]);
+        
         return parent::getPage('Preencher BA', $content, 'cadastro-ba', BoletimAnalise::SCRIPT_SRC);
     }
+
     public static function setBA($request){
         $postVars            = $request->getPostvars();
         $ba                  = $postVars['ba'] ?? '';
@@ -141,10 +147,12 @@ class BoletimAnalise extends Page{
         if(!isset($_FILES['arquivo-csv'])){
             die("Ocorreu um erro ao carregar o arquivo\n");
         }
+
         $filePath = $_FILES['arquivo-csv']['tmp_name'];
         $datalist = CSV::lerArquivo($filePath, true, ';');
         $itens = '';
         $_SESSION['ba']['dados-csv'] = $datalist;
+        
         foreach($datalist as $row){
             $itens .= View::render('cadastros/boletimAnalise/dados-csv-item', [
                 'ba'            => $row['BA'],
@@ -153,10 +161,12 @@ class BoletimAnalise extends Page{
                 'central'       => $row['CENTRAL'],
                 'ga'            => $row['GA'] 
             ]);
-        }       
+        }
+
         $content = View::render('cadastros/boletimAnalise/dados-csv', [
             'itens' => $itens
         ]);
+        
         return $content;
     }
 
@@ -167,15 +177,19 @@ class BoletimAnalise extends Page{
         $r = new stdClass;
         $r->data = $result;
         $r->mascaraEncerramento = $mascaraEncerramento;
+        
         $resultAsJson = json_encode($r);
+        
         return $resultAsJson;
     }
 
     public static function getEditBa($request,$ba){
         $obItens = BoletimAnalises::findById($ba);
+        
         if(!$obItens instanceof BoletimAnalises){
             $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
+        
         $content = View::render('cadastros/boletimAnalise/form',[
             'title'                 => 'Editar BA',
             'ba'                    => $obItens->ba,
@@ -231,14 +245,17 @@ class BoletimAnalise extends Page{
             'supervisor'            => $obItens->supervisor,
             'status'                => self::getStatus($request)
         ]);
+
         return parent::getPage('Editar BA > Icomon', $content, 'ba');
     }
 
     public static function setEditBa($request,$ba){
         $obItens = BoletimAnalises::findById($ba);
+        
         if(!$obItens instanceof BoletimAnalises){
             $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
+        
         $postVars            = $request->getPostVars();
         $ba                  = $postVars['ba'] ?? '';
         $backbone            = $postVars['backbone'] ?? '';
@@ -349,9 +366,11 @@ class BoletimAnalise extends Page{
 
     public static function getPrintBa($request,$ba){
         $obItens = BoletimAnalises::findById($ba);
+        
         if(!$obItens instanceof BoletimAnalises){
             $request->getRouter()->redirect('/cadastros/boletimAnalise');
         }
+        
         $content = View::render('cadastros/boletimAnalise/gerar_pdf',[
             'title'                 => 'Boletim de Análise',
             'ba'                    => $obItens->ba,
@@ -406,6 +425,7 @@ class BoletimAnalise extends Page{
             'add_croqui'            => $obItens->add_croqui,
             'supervisor'            => $obItens->supervisor,
         ]);
+
         return parent::getPrint('PDF BA > Icomon', $content, 'ba');
     }
 
@@ -414,8 +434,9 @@ class BoletimAnalise extends Page{
         $quantidadetotal = BoletimAnalises::getBAs(null,null,null,'COUNT(*) as qtd')->fetchObject()->qtd;
         $queryParams = $request->getQueryParams();
         $paginaAtual = $queryParams['page'] ?? 1;
-        $obPagination = new Pagination($quantidadetotal, $paginaAtual, 7);
-        $results = BoletimAnalises::getBAs(null, 'ba DESC',$obPagination->getLimit());
+        $obPagination = new Pagination($quantidadetotal, $paginaAtual);
+        $results = BoletimAnalises::getBAs(null, 'ba DESC', $obPagination->getLimit());
+        
         while($obItens = $results->fetchObject(BoletimAnalises::class)){
             $itens .= View::render('cadastros/boletimAnalise/item', [
                 'ba'                    => $obItens->ba,
@@ -476,7 +497,9 @@ class BoletimAnalise extends Page{
     
     private static function getStatus($request){
         $queryParams = $request->getQueryParams();
+        
         if(!isset($queryParams['status'])) return '';
+        
         switch ($queryParams['status']) {
             case 'created':
                 return Alert::getSuccess('BA cadastrado com sucesso!');
