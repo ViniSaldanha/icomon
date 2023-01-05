@@ -1,0 +1,65 @@
+<div class="container my-3">
+    <h3>Máscara de encerramento</h3>
+
+    <hr>
+    
+    <a href="{{URL}}/cadastros/mascaraEncerramento/new">
+        <button type="button" class="btn btn-success">Registrar máscara</button>
+    </a>
+    
+    <hr>
+    
+    {{status}}
+    <div class="" style="max-width: 100% ; height: 400px; overflow: scroll; font-size:0.675em; cursor:pointer;">
+        <table class="table table-bordered table-hover table-striped table-responsive-sm text-nowrap" >
+            <thead>
+                <tr>
+                    <th>BA</th>
+                    <th>ENPE/E/EMF/REPASSE</th>
+                    <th>LOCALIDADE</th>
+                    <th>AÇÕES</th>
+                    <th>ESTACÃO/CENTRAL</th>
+                    <th>RAMIFICAÇÃO</th>
+                    <th>TRECHO</th>  
+                    <th>HOUVE EMENDA?</th>
+                    <th>CODIGO CAIXA EMENDA01</th>
+                    <th>NUMERO EMENDA01</th>
+                    <th>ENDEREÇO EMENDA01</th>
+                    <th>REFERENCIA EMENDA01</th>
+                    <th>DISTANCIA EMENDA01</th>
+                    <th>COORDENADAS EMENDA01</th>
+                    <th>APLICOU SEGUNDA EMENDA?</th>
+                    <th>CODIGO CAIXA EMENDA02</th>
+                    <th>NUMERO EMENDA02</th>
+                    <th>ENDEREÇO EMENDA02</th>
+                    <th>REFERENCIA EMENDA02</th>
+                    <th>DISTANCIA EMENDA02</th>
+                    <th>COORDENADAS EMENDA02</th>
+                    <th>TIPO EMENDA</th>
+                    <th>CODIGO NUMERO CABO</th>
+                    <th>MODELO EMENDA</th>
+                    <th>FABRICANTE</th>
+                    <th>QUANTIDADE FIBRA CABO</th>
+                    <th>QUANTIDADE FUSAO REALIZADA</th>
+                    <th>SISTEMA AFETADO</th>               
+                    <th>AÇÃO CORRETIVA</th>
+                    <th>NOME COMPLETO</th>
+                    <th>RE</th>
+                    <th>OBSERVAÇÕES</th>
+                    <th>PROBLEMA ENCONTRADO</th>
+                    <th>CAUSA RAIZ</th>
+                    <th>RO/CIS</th>
+                    <th>CAUSADOR DANO </th>
+                    <th>MISCELANEAS</th>
+                    <th>FOTO ANTES</th>
+                    <th>FOTO DEPOIS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{itens}}
+            </tbody>
+        </table>
+        </div>
+        {{pagination}}
+    </div>
+</div>

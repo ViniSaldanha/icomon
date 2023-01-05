@@ -5,7 +5,7 @@ use \WilliamCosta\DatabaseManager\Database;
 
 class User{
     public $id;
-    public $name;
+    public $nome;
     public $email;
     public $senha;
 

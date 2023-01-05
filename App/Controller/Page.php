@@ -43,7 +43,7 @@ class Page {
         ]);
     }
 
-    public static function getImpressao($title, $content, $currentModule = '', $scriptSrc = ''){
+    public static function getPrint($title, $content, $currentModule = '', $scriptSrc = ''){
         return View::render('layout/pagepdf', [
             'title' => $title,
             'header' => self::getHeader(),
@@ -69,6 +69,11 @@ class Page {
             'label' => 'Cadastro BA',
             'link'  => URL.'/cadastros/boletimAnalise',
             'icon'  => 'table'
+        ],
+        'mascara-encerramento' =>[
+            'label' => 'Mascara de Enc',
+            'link'  => URL.'/cadastros/mascaraEncerramento',
+            'icon'  => 'clipboard'
         ]
     ];
 
