@@ -2,7 +2,7 @@
 
 namespace App\Controller\Cadastros;
 
-use App\Controller\Alert;
+use App\Controller\Components\Alert;
 use App\Controller\Page;
 use \App\Utils\View;
 use \App\Model\Entity\MascarasEncerramento;
