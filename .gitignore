@@ -3,3 +3,6 @@
 
 # Ignorando pasta node_modules
 node_modules
+
+# Ignorando arquivos de usuario dos pacotes node
+package-lock.json
