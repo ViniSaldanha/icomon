@@ -1,0 +1,176 @@
+<div class="container my-3">
+    <h3>{{title}}</h3>
+
+    <hr>
+    
+    <a href="{{URL}}/cadastros/mascaraEncerramento">
+        <button type="button" class="btn btn-warning">Voltar</button>
+    </a>
+    
+    <hr>
+    
+    {{status}}
+    
+                <form class="row g-3 needs-validation" method="post">
+                    <div class="col-md-3">
+                        <label class="form-label" for="enpe_e_emf_repasse">ENPE/E/EMF/REPASSE:</label>
+                        <input class="form-control form-control-sm" name="enpe_e_emf_repasse" id="enpe_e_emf_repasse" value="{{enpe_e_emf_repasse}}" type="text" required />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="ba">Ba:</label>
+                        <input class="form-control form-control-sm" name="ba" id="ba" value="{{ba}}" type="text" required />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="localidade">Localidade:</label>
+                        <input class="form-control form-control-sm" name="localidade" id="localidade" value="{{localidade}}" type="text" required />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="estacao_central">Estação/Central:</label>
+                        <input class="form-control form-control-sm" name="estacao_central" id="estacao_central" value="{{estacao_central}}" type="text" required />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="ramificacao">Ramificação:</label>
+                        <input class="form-control form-control-sm" name="ramificacao" id="ramificacao" value="{{ramificacao}}" type="text" required />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="trecho">Trecho:</label>
+                        <input class="form-control form-control-sm" name="trecho" id="trecho" value="{{trecho}}" type="text"  required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="quantidade_de_emendas">Houve emenda?</label>
+                        <input class="form-control form-control-sm" name="quantidade_de_emendas" id="quantidade_de_emendas" value="{{quantidade_de_emendas}}" type="text"  required/>
+                    </div> 
+                    <div class="col-md-2">
+                        <label class="form-label" for="codigo_caixa_emenda01">Cod cx emenda01:</label>
+                        <input class="form-control form-control-sm" name="codigo_caixa_emenda01" id="codigo_caixa_emenda01" value="{{codigo_caixa_emenda01}}" type="text" required />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="numero_emenda01">Número emenda01:</label>
+                        <input class="form-control form-control-sm" name="numero_emenda01" id="numero_emenda01" value="{{numero_emenda01}}" type="text" required />
+                    </div>                 
+                    <div class="col-md-2">
+                        <label class="form-label" for="endereço_emenda01">Endereço emenda01:</label>
+                        <input class="form-control form-control-sm" name="endereço_emenda01" id="endereço_emenda01" value="{{endereço_emenda01}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="referencia_emenda01">Referência emenda01:</label>
+                        <input class="form-control form-control-sm" name="referencia_emenda01" id="referencia_emenda01" value="{{referencia_emenda01}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="distancia_emenda01">Distancia emenda01:</label>
+                        <input class="form-control form-control-sm" name="distancia_emenda01" id="distancia_emenda01" value="{{distancia_emenda01}}" type="text" required/>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="coordenada_emenda01">Coordenada emenda01:</label>
+                        <input class="form-control form-control-sm" name="coordenada_emenda01" id="coordenada_emenda01" value="{{coordenada_emenda01}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="aplicou_segunda_emenda">Houve segunda emenda?</label>
+                        <input class="form-control form-control-sm" name="aplicou_segunda_emenda" id="aplicou_segunda_emenda" value="{{aplicou_segunda_emenda}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="codigo_caixa_emenda02">Cod cx emenda02:</label>
+                        <input class="form-control form-control-sm" name="codigo_caixa_emenda02" id="codigo_caixa_emenda02" value="{{codigo_caixa_emenda02}}" type="text" required />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="numero_emenda02">Número emenda02:</label>
+                        <input class="form-control form-control-sm" name="numero_emenda02" id="numero_emenda02" value="{{numero_emenda02}}" type="text" required />
+                    </div>                 
+                    <div class="col-md-2">
+                        <label class="form-label" for="endereço_emenda02">Endereço emenda02:</label>
+                        <input class="form-control form-control-sm" name="endereço_emenda02" id="endereço_emenda02" value="{{endereço_emenda02}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="referencia_emenda02">Referência emenda02:</label>
+                        <input class="form-control form-control-sm" name="referencia_emenda02" id="referencia_emenda02" value="{{referencia_emenda02}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="distancia_emenda02">Distancia emenda02:</label>
+                        <input class="form-control form-control-sm" name="distancia_emenda02" id="distancia_emenda02" value="{{distancia_emenda02}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="coordenada_emenda02">Coordenada emenda02:</label>
+                        <input class="form-control form-control-sm" name="coordenada_emenda02" id="coordenada_emenda02" value="{{coordenada_emenda02}}" type="text" required/>
+                    </div> 
+                    <div class="col-md-2">
+                        <label class="form-label" for="tipo_de_emenda">Tipo de emenda:</label>
+                        <input class="form-control form-control-sm" name="tipo_de_emenda" id="tipo_de_emenda" value="{{tipo_de_emenda}}" type="text" required/>
+                    </div> 
+                    <div class="col-md-2">
+                        <label class="form-label" for="modelo_emenda">Modelo emenda:</label>
+                        <input class="form-control form-control-sm" name="modelo_emenda" id="modelo_emenda" value="{{modelo_emenda}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="codigo_numero_cabo">Código numero cabo:</label>
+                        <input class="form-control form-control-sm" name="codigo_numero_cabo" id="codigo_numero_cabo" value="{{codigo_numero_cabo}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="fabricante">Fabricante:</label>
+                        <input class="form-control form-control-sm" name="fabricante" id="fabricante" value="{{fabricante}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="quantidade_fibra_cabo">Qtd fibra do cabo:</label>
+                        <input class="form-control form-control-sm" name="quantidade_fibra_cabo" id="quantidade_fibra_cabo" value="{{quantidade_fibra_cabo}}" type="text" required/>
+                    </div>      
+                    <div class="col-md-2">
+                        <label class="form-label" for="quantidade_fusao_realizada">Qtd fusão realizada:</label>
+                        <input class="form-control form-control-sm" name="quantidade_fusao_realizada" id="quantidade_fusao_realizada" value="{{quantidade_fusao_realizada}}" type="text" required/>
+                    </div>  
+                    <div class="col-md-2">
+                        <label class="form-label" for="sistema_afetado">Sistema afetado:</label>
+                        <input class="form-control form-control-sm" name="sistema_afetado" id="sistema_afetado" value="{{sistema_afetado}}" type="text" required/>
+                    </div>    
+                    <div class="col-md-3">
+                        <label class="form-label" for="acaoCorretiva">Ação corretiva executada:</label>
+                        <input class="form-control form-control-sm" name="acaoCorretiva" id="acaoCorretiva" value="{{acaoCorretiva}}" type="text" required/>
+                    </div>         
+                    <div class="col-md-3">
+                        <label class="form-label" for="nome_completo">Nome completo:</label>
+                        <input class="form-control form-control-sm" name="nome_completo" id="nome_completo" value="{{nome_completo}}" type="text" required/>
+                    </div>
+                    <div class="col-md-1">
+                        <label class="form-label" for="re">RE:</label>
+                        <input class="form-control form-control-sm" name="re" id="re" value="{{re}}" type="text" required/>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="observacoes">Observações:</label>
+                        <input class="form-control form-control-sm" name="observacoes" id="observacoes" value="{{observacoes}}" type="text" required/>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="problema_encontrado">Problema encontrado:</label>
+                        <input class="form-control form-control-sm" name="problema_encontrado" id="problema_encontrado" value="{{problema_encontrado}}" type="text" required/>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label" for="causa_raiz">Causa raiz:</label>
+                        <input class="form-control form-control-sm" name="causa_raiz" id="causa_raiz" value="{{causa_raiz}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="ro_cis">Ro/Cis:</label>
+                        <input class="form-control form-control-sm" name="ro_cis" id="ro_cis" value="{{ro_cis}}" type="text" required/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label" for="causador_dano">Causador dano:</label>
+                        <input class="form-control form-control-sm" name="causador_dano" id="causador_dano" value="{{causador_dano}}" type="text" required/>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-label" for="miscelaneas">Miscelaneas:</label>
+                        <input class="form-control form-control-sm" name="miscelaneas" id="miscelaneas" value="{{miscelaneas}}" type="text" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto_antes" class="form-label">
+                            <h6>ADICIONAR FOTO ANTES:</h6>
+                        </label>
+                        <input class="form-control form-control-sm" type="file" name="foto_antes" id="foto_antes">
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto_depois" class="form-label">
+                            <h6>ADICIONAR FOTO DEPOIS:</h6>
+                        </label>
+                        <input class="form-control form-control-sm" type="file" name="foto_depois" id="foto_depois">
+                    </div>
+                    
+                    <hr class="my-5">
+
+                    <button class="w-100 btn btn-success btn-lg" type="submit">Enviar Cadastro</button>
+                </form>   
+</div>
