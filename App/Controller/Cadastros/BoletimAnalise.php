@@ -211,6 +211,7 @@ class BoletimAnalise extends Page{
             'numero_cis'            => $obItens->numero_cis,
             'descricao_trecho'      => $obItens->descricao_trecho,
             'tipo_utilizacao'       => $obItens->tipo_utilizacao,
+            'opt-tipo-utilizacao'   => Options::loadOptions('TP_UTILIZACAO', $obItens->tipo_utilizacao),
             'rede_metalica'         => $obItens->rede_metalica,
             'causa_rompimento'      => $obItens->causa_rompimento,
             'sub_causa'             => $obItens->sub_causa,
