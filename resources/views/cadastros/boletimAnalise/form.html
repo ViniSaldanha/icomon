@@ -92,7 +92,10 @@
         </div>
         <div class="col-md-2">
             <label for="tipo_utilizacao" class="form-label">Tipo utilização:</label>
-            <input type="text" class="form-control form-control-sm" name="tipo_utilizacao" id="tipo_utilizacao" value="{{tipo_utilizacao}}" required>
+            <select class="form-select form-select-sm" name="tipo_utilizacao" id="tipo_utilizacao" aria-label=".form-select-sm example" required>
+                <option selected=""></option>
+                {{opt-tipo-utilizacao}}
+            </select>
         </div>
         <div class="col-md-2">
             <label for="rede_metalica" class="form-label">Rede metalica:</label>
