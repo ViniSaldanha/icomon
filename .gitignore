@@ -1,1 +1,5 @@
+# Ignorando arquivo de variaveis de ambiente
 .env
+
+# Ignorando pasta node_modules
+node_modules
